@@ -1,0 +1,1 @@
+ g++ -o rpg .\BattleSystem.cpp .\Enemy.cpp .\main.cpp .\player.cpp .\save_load.cpp .\shop.cpp .\Trap.cpp .\Item.cpp .\Skill.cpp .\chest.cpp
