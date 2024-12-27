@@ -1,10 +1,42 @@
-#include "Player.h"
 #include <iostream>
-#include <algorithm> // for std::min
+#include <vector>
+#include <string>
 
-using namespace std;
+class Enemy {
+public:
+    int attack = 10;
+};
 
-// ≠p∫‚¡`ß¿ª§O
+class Item {
+public:
+    std::string name;
+    int attackBonus = 0;
+    int defenseBonus = 0;
+};
+
+// Áé©ÂÆ∂ÁªìÊûÑ‰Ωì
+class Player {
+public:
+    std::string role;
+    int level = 1;
+    int hp = 100;
+    int maxHp = 100;
+    int mp = 50;
+    int maxMp = 50;
+    int attack = 10;
+    int defense = 5;
+    int coins = 0;
+    std::vector<Item> inventory;
+    Item equippedItems[3];
+
+    int getTotalAttack() const;
+    void levelUp();
+    void defend(const Enemy& enemy);
+    void useItem(Enemy& enemy);
+    void useSkill(Enemy& enemy);
+};
+
+// Ëé∑ÂèñÊÄªÊîªÂáªÂäõ
 int Player::getTotalAttack() const {
     int totalAttack = attack;
     for (const auto& item : equippedItems) {
@@ -13,93 +45,40 @@ int Player::getTotalAttack() const {
     return totalAttack;
 }
 
-// §…Ø≈•\Ø‡
+// ÂçáÁ∫ß
 void Player::levelUp() {
     ++level;
-    maxHp += 10;  // ¥£§…≥Ã§j¶Â∂q
-    hp = maxHp;   // ´Ï¥_¶Â∂q¶‹≥Ã§j≠»
-    maxMp += 5;   // ¥£§…≥Ã§j≈]§O≠»
-    mp = maxMp;   // ´Ï¥_≈]§O≠»
-    attack += 3;  // ¥£§…ß¿ª§O
-    defense += 2; // ¥£§…®æøm§O
-    cout << "You leveled up to level " << level << "!" << endl;
-    cout << "Max HP: " << maxHp << ", Max MP: " << maxMp
-        << ", Attack: " << attack << ", Defense: " << defense << endl;
-}
-
-// ®æøm•\Ø‡
-void Player::defend(const Enemy& enemy) {
-    int damage = max(0, enemy.attack - defense); // ≠p∫‚¥ÓßK´·™∫∂ÀÆ`
-    hp -= damage;
-    cout << "You defended! Damage taken: " << damage << ". Your HP is now: " << hp << endl;
-}
-
-// ®œ•ŒπD®„
-void Player::useItem(Enemy& enemy) {
-    displayItems(*this); // ≈„•‹≠I•]§∫™∫πD®„
-    cout << "Choose an item to use (enter the item number): ";
-    int choice;
-    cin >> choice;
-    useItem(*this, enemy, choice); // Ω’•Œ•˛ßΩ useItem ®Áº∆
-}
-
-// ®œ•ŒßﬁØ‡
-void Player::useSkill(Enemy& enemy) {
-    displaySkills(); // ≈„•‹ßﬁØ‡¶C™Ì
-    cout << "Choose a skill to use (enter the skill number): ";
-    int choice;
-    cin >> choice;
-    useSkill(*this, enemy, choice); // Ω’•Œ•˛ßΩ useSkill ®Áº∆
-}
-
-// ≈„•‹™±Æa∏Í∞T
-void displayPlayerInfo(const Player& player) {
-    cout << "Role: " << player.role << "\n"
-        << "Level: " << player.level << "\n"
-        << "HP: " << player.hp << "/" << player.maxHp << "\n"
-        << "MP: " << player.mp << "/" << player.maxMp << "\n"
-        << "Attack: " << player.getTotalAttack() << "\n"
-        << "Defense: " << player.defense << "\n"
-        << "Coins: " << player.coins << endl;
-    cout << "Equipped Items:" << endl;
-    for (const auto& item : player.equippedItems) {
-        cout << "- " << item.name << " (Attack: " << item.attackBonus
-            << ", Defense: " << item.defenseBonus << ")" << endl;
-    }
-}
-void Player::resetPlayer() {
-    cout << "Returning to the character selection screen..." << endl;
-    cout << "Choose your role: 1. Warrior 2. Mage 3. Archer\n";
-    int choice;
-    cin >> choice;
-
-    if (choice == 1) {
-        role = "Warrior";
-        maxHp = 100;
-        attack = 15;
-        defense = 10;
-    }
-    else if (choice == 2) {
-        role = "Mage";
-        maxHp = 70;
-        attack = 10;
-        defense = 5;
-    }
-    else {
-        role = "Archer";
-        maxHp = 80;
-        attack = 12;
-        defense = 8;
-    }
-
-    level = 1;
+    maxHp += 10;
+    maxMp += 5;
     hp = maxHp;
-    maxMp = 30;
     mp = maxMp;
-    coins = 20;
-    inventory.clear();
-    for (int i = 0; i < 3; ++i) {
-        equippedItems[i] = { "None", "No item equipped", 0, 0 };
-    }
-    cout << "You are now a " << role << "!" << endl;
+    attack += 3;
+    defense += 2;
+    std::cout << "Level up! You are now level " << level << "." << std::endl;
 }
+
+// Èò≤Âæ°
+void Player::defend(const Enemy& enemy) {
+    int damage = std::max(0, enemy.attack - defense);
+    hp -= damage;
+    std::cout << "You defended! Damage taken: " << damage << ". HP: " << hp << std::endl;
+}
+
+// ‰ΩøÁî®ÈÅìÂÖ∑
+void Player::useItem(Enemy& enemy) {
+    std::cout << "Using item on enemy." << std::endl;
+}
+
+// ‰ΩøÁî®ÊäÄËÉΩ
+void Player::useSkill(Enemy& enemy) {
+    std::cout << "Using skill on enemy." << std::endl;
+}
+
+// ÊòæÁ§∫Áé©ÂÆ∂‰ø°ÊÅØ
+void displayPlayerInfo(const Player& player) {
+    std::cout << "Role: " << player.role << ", Level: " << player.level << std::endl;
+    std::cout << "HP: " << player.hp << "/" << player.maxHp
+              << ", MP: " << player.mp << "/" << player.maxMp << std::endl;
+}
+
+

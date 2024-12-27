@@ -2,17 +2,19 @@
 #define ENEMY_H
 
 #include <string>
-#include <iostream>
-using namespace std;
+
+// 使用前向宣告避免循環依賴
+class Player;
 
 class Enemy {
 public:
-    string name;
+    std::string name;
     int hp;
     int attack;
 
-    Enemy(string enemyName, int enemyHP, int enemyAttack);
-    void showStats();
+    Enemy(const std::string& name, int hp, int attack);
+    void showStats() const;
+    void attackPlayer(Player& player); // 將方法聲明保留
 };
 
-#endif // ENEMY_H
+#endif

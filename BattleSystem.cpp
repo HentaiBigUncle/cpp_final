@@ -13,7 +13,7 @@ void battle(Player& player) {
     cout << "A wild " << enemy.name << " appears!" << endl;
     enemy.showStats();
 
-    // ª±®a°òÂ¦§ðÀ»¥[¤W¸Ë³Æ¥[¦¨
+    // ï¿½ï¿½ï¿½aï¿½ï¿½Â¦ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Wï¿½Ë³Æ¥[ï¿½ï¿½
     int totalAttack = player.getTotalAttack();
 
     while (player.hp > 0 && enemy.hp > 0) {
@@ -22,7 +22,7 @@ void battle(Player& player) {
         cin >> choice;
 
         switch (choice) {
-        case 1: { // ´¶³q§ðÀ»
+        case 1: { // ï¿½ï¿½ï¿½qï¿½ï¿½ï¿½ï¿½
             cout << "You attacked the enemy!" << endl;
             enemy.hp -= totalAttack;
             cout << "Enemy HP is now: " << enemy.hp << endl;
@@ -34,16 +34,16 @@ void battle(Player& player) {
             }
             break;
         }
-        case 2: { // ¨¾¿m
+        case 2: { // ï¿½ï¿½ï¿½m
             cout << "You defended against the enemy's attack!" << endl;
             player.defend(enemy);
             break;
         }
-        case 3: { // ¨Ï¥Î¹D¨ã
+        case 3: { // ï¿½Ï¥Î¹Dï¿½ï¿½
             player.useItem(enemy);
             break;
         }
-        case 4: { // ¨Ï¥Î§Þ¯à
+        case 4: { // ï¿½Ï¥Î§Þ¯ï¿½
             player.useSkill(enemy);
             break;
         }
@@ -51,7 +51,7 @@ void battle(Player& player) {
             cout << "Invalid action! The enemy attacks you!" << endl;
         }
 
-        // ¼Ä¤H¤ÏÀ»
+        // ï¿½Ä¤Hï¿½ï¿½ï¿½ï¿½
         if (enemy.hp > 0) {
             enemy.attackPlayer(player);
         }

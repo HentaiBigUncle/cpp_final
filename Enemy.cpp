@@ -1,10 +1,16 @@
 #include "Enemy.h"
+#include "Player.h"
+#include <iostream>
+using namespace std;
 
-// Constructor
-Enemy::Enemy(string enemyName, int enemyHP, int enemyAttack)
-    : name(enemyName), hp(enemyHP), attack(enemyAttack) {}
+Enemy::Enemy(const std::string& name, int hp, int attack)
+    : name(name), hp(hp), attack(attack) {}
 
-// Display enemy stats
-void Enemy::showStats() {
-    cout << "Enemy: " << name << ", HP: " << hp << ", Attack: " << attack << endl;
+void Enemy::showStats() const {
+    cout << "Enemy: " << name << "\nHP: " << hp << "\nAttack: " << attack << endl;
+}
+
+void Enemy::attackPlayer(Player& player) {
+    player.hp -= attack;
+    cout << name << " attacks! Player's HP is now: " << player.hp << endl;
 }

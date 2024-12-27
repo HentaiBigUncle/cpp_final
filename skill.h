@@ -3,8 +3,8 @@
 
 #include "Player.h"
 #include "Enemy.h"
-
-// ¦CÁ|§Þ¯à
+class Enemy;
+// ï¿½Cï¿½|ï¿½Þ¯ï¿½
 void displaySkills();
 void useSkill(Player& player, Enemy& enemy, int skillChoice);
 

@@ -3,9 +3,11 @@
 
 #include <string>
 #include <vector>
-#include "Item.h"
-#include "Skill.h"
 
+// 使用前向宣告避免循環依賴
+class Enemy;
+#include "Item.h"
+class Skill;
 // 玩家結構體
 struct Player {
     std::string role;       // 玩家角色
