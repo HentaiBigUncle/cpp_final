@@ -26,8 +26,6 @@ struct Player {
     int getTotalAttack() const; // 計算總攻擊力
     void levelUp();             // 升級
     void defend(const Enemy& enemy); // 防禦
-    void useItem(Enemy& enemy);      // 使用道具
-    void useSkill(Enemy& enemy);     // 使用技能
 
     // 重置玩家狀態（在血量歸零後使用）
     void resetPlayer();

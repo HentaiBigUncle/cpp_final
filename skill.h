@@ -6,6 +6,6 @@
 class Enemy;
 // �C�|�ޯ�
 void displaySkills();
-void useSkill(Player& player, Enemy& enemy, int skillChoice);
+void useSkill(Player& player, Enemy& enemy);
 
 #endif
