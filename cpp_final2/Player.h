@@ -17,10 +17,11 @@ class character;
 class Player
 {
 	character* chara = NULL;
-	map<string, Item> *inventory = NULL;
+	vector<Item> inventory;
 	int lv = 1;//level
 	int coin;
 	int exp = 0;
+	int level = 1;
 	int maxExp = 100;
 	string role, name;
 	bool isDie = false;
@@ -36,27 +37,29 @@ class Player
 	void changeLv();
 
 	//position
-	int pX, pY;
+	int pX = 1, pY = 1;
 	//level
 	bool levelOneComplete = false;
 	bool levelTwoComplete = false;
 	bool levelThreeComplete = false;
 	bool levelFourComplete = false;
 public:
-	Player(int, string, character);
+	Player(int, string, character*);
 	//get
+	int getLevelOfMaze();
 	int getLevel();
 	int getCoin();
 	bool getDie();
 	character* getCharacter();
 	//change
+	void changeLevelOfMaze();
 	void changeExp(int);
 	void changeCoin(int);
 	void displayItems();
 	void receiveDamage(int, string);
 
 	Equipment *getEquipment();
-	map<string, Item> *getInventor();
+	vector<Item> *getInventor();
 	
 	void getCoinExpByEnemy(enemy*);
 
@@ -88,6 +91,7 @@ public:
 	void displaySword();
 	void displayAmulet();
 
+	void addItem(Item&);
 	void Equip(Player&);
 	void EquipHelmet(Player& );
 	void EquipArmor(Player&);
@@ -110,8 +114,10 @@ public:
 	void changeLevel2();
 	void changeLevel3();
 	void changeLevel4();
+	void changeDeath();
 
 	void displayItem();
+	void displayEquipment();
 	void useItem(Player&, enemy&);
 	void print();
 };

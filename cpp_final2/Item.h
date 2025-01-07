@@ -3,7 +3,8 @@
 #include"enemy.h"
 #include"Player.h"
 using namespace std;
-//class Player;
+
+class Player;
 class Enemy;
 
 class Item
@@ -31,5 +32,6 @@ public:
 	void addItemToInventory(Player&, Item&);
 	string getName();
 	int getAmount();
+	void addAmount();
 	void print();
 };

@@ -26,15 +26,11 @@ using namespace std;
 
 class GameManager
 {
-	vector<enemy> AllEnemy;
 public:
-	void level1(maze&, Player&, Item&, enemy&, battle&, event&, chest&, trap&, boss&);
-	void level2(maze&, Player&, Item&, enemy&, battle&, event&, chest&, trap&, boss&);
-	void level3(maze&, Player&, Item&, enemy&, battle&, event&, chest&, trap&, boss&);
-	void level4(maze&, Player&, Item&, enemy&, battle&, event&, chest&, trap&, boss&);
+	void level1(maze&, Player&, Item&, vector<enemy> &, battle&, event&, chest&, trap&, boss&);
+	void level2(maze&, Player&, Item&, vector<enemy>&, battle&, event&, chest&, trap&, boss&);
+	void level3(maze&, Player&, Item&, vector<enemy>&, battle&, event&, chest&, trap&, boss&);
+	void level4(maze&, Player&, Item&, vector<enemy>&, battle&, event&, chest&, trap&, boss&);
 	void openShop(shop&, Player&);
-
-	void addEnemy(enemy&);
-	void clearEnemy();
 };
 

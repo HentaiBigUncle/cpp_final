@@ -8,6 +8,5 @@ MagicPotion::MagicPotion(int mHp, int mMp, int atk, int mAtk, int mDfs, int r, i
 void MagicPotion::useItem(Player& p, enemy& e) const
 {
 	p.getCharacter()->changeMp(mp);
-	cout << "You restore your mp" << endl;
-	
+	cout << "You restore " <<mp<<" mp" << endl;
 }

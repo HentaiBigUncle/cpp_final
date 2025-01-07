@@ -67,7 +67,7 @@ void shop::displayShopHelmet()
 {
 	for (size_t i = 0; i < shopHelmet.size(); i++)
 	{
-		cout << i + 1 << ". " <<endl;
+		cout << i + 1 << ". " <<"Cost "<<shopHelmet[i].getGold()<<"$" << endl;
 		shopHelmet[i].print();
 		if (i == shopHelmet.size() - 1)
 			cout << i + 2 << ". Not want to buy" << endl;
@@ -78,7 +78,7 @@ void shop::displayShopArmor()
 {
 	for (size_t i = 0; i < shopArmor.size(); i++)
 	{
-		cout << i + 1 << ". " << endl;
+		cout << i + 1 << ". " << "Cost " << shopArmor[i].getGold() << "$" << endl;
 		shopArmor[i].print();
 		if (i == shopArmor.size() - 1)
 			cout << i + 2 << ". Not want to buy" << endl;
@@ -89,7 +89,7 @@ void shop::displayShopLeg_Armor()
 {
 	for (size_t i = 0; i < shopLeg_Armor.size(); i++)
 	{
-		cout << i + 1 << ". " << endl;
+		cout << i + 1 << ". " << "Cost " << shopLeg_Armor[i].getGold() << "$" << endl;
 		shopLeg_Armor[i].print();
 		if (i == shopLeg_Armor.size() - 1)
 			cout << i + 2 << ". Not want to buy" << endl;
@@ -100,7 +100,7 @@ void shop::displayShopHand_Armor()
 {
 	for (size_t i = 0; i < shopHand_Armor.size(); i++)
 	{
-		cout << i + 1 << ". " << endl;
+		cout << i + 1 << ". " << "Cost " << shopHand_Armor[i].getGold() << "$" << endl;
 		shopHand_Armor[i].print();
 		if (i == shopHand_Armor.size() - 1)
 			cout << i + 2 << ". Not want to buy" << endl;
@@ -111,7 +111,7 @@ void shop::displayShopSword()
 {
 	for (size_t i = 0; i < shopSword.size(); i++)
 	{
-		cout << i + 1 << ". " << endl;
+		cout << i + 1 << ". " << "Cost " << shopSword[i].getGold() << "$" << endl;
 		shopSword[i].print();
 		if (i == shopSword.size() - 1)
 			cout << i + 2 << ". Not want to buy" << endl;
@@ -122,7 +122,7 @@ void shop::displayShopAmulet()
 {
 	for (size_t i = 0; i < shopAmulet.size(); i++)
 	{
-		cout << i + 1 << ". " << endl;
+		cout << i + 1 << ". " << "Cost " << shopAmulet[i].getGold() << "$" << endl;
 		shopAmulet[i].print();
 		if (i == shopAmulet.size() - 1)
 			cout << i + 2 << ". Not want to buy" << endl;
@@ -133,7 +133,7 @@ void shop::displayShopItems()
 {
 	for (size_t i = 0; i < shopItem.size(); i++)
 	{
-		cout << i + 1 << ". " << endl;
+		cout << i + 1 << ". " << "Cost " << shopItem[i].getGold() << "$" << endl;
 		shopItem[i].print();
 		if (i == shopItem.size() - 1)
 			cout << i + 2 << ". Not want to buy" << endl;
@@ -147,10 +147,10 @@ void shop::purchaseEquipmentItems(int command, Player& p)
 	bool isShop = true;
 	if (command == 1)
 	{
-		displayShopHelmet();
 		while (isShop)
 		{
-			cout << "You have " << p.getCoin() << "$" << endl;
+			displayShopHelmet();
+			cout << "You have " << p.getCoin() << " coin" << endl;
 			cin >> choice;
 			if (choice > 0 && choice <= shopHelmet.size() + 1)
 			{
@@ -180,9 +180,9 @@ void shop::purchaseEquipmentItems(int command, Player& p)
 	}
 	else if (command == 2)
 	{
-		displayShopArmor();
 		while (isShop)
 		{
+			displayShopArmor();
 			cout << "You have " << p.getCoin() << "$" << endl;
 			cin >> choice;
 			if (choice > 0 && choice <= shopArmor.size() + 1)
@@ -218,9 +218,9 @@ void shop::purchaseEquipmentItems(int command, Player& p)
 	}
 	else if (command == 3)
 	{
-		displayShopLeg_Armor();
 		while (isShop)
 		{
+			displayShopLeg_Armor();
 			cout << "You have " << p.getCoin() << "$" << endl;
 			cin >> choice;
 			if (choice > 0 && choice <= shopLeg_Armor.size() + 1)
@@ -251,9 +251,9 @@ void shop::purchaseEquipmentItems(int command, Player& p)
 	}
 	else if (command == 4)
 	{
-		displayShopHand_Armor();
 		while (isShop)
 		{
+			displayShopHand_Armor();
 			cout << "You have " << p.getCoin() << "$" << endl;
 			cin >> choice;
 			if (choice > 0 && choice <= shopHand_Armor.size() + 1)
@@ -284,9 +284,9 @@ void shop::purchaseEquipmentItems(int command, Player& p)
 	}
 	else if (command == 5)
 	{
-		displayShopSword();
 		while (isShop)
 		{
+			displayShopSword();
 			cout << "You have " << p.getCoin() << "$" << endl;
 			cin >> choice;
 			if (choice > 0 && choice <= shopSword.size() + 1)
@@ -317,9 +317,9 @@ void shop::purchaseEquipmentItems(int command, Player& p)
 	}
 	else if (command == 6)
 	{
-		displayShopAmulet();
 		while (isShop)
 		{
+			displayShopAmulet();
 			cout << "You have " << p.getCoin() << "$" << endl;
 			cin >> choice;
 			if (choice > 0 && choice <= shopAmulet.size() + 1)
@@ -350,9 +350,9 @@ void shop::purchaseEquipmentItems(int command, Player& p)
 	}
 	else if (command == 7)
 	{
-		displayShopItems();
 		while (isShop)
 		{
+			displayShopItems();
 			cin >> choice;
 			if (choice > 0 && choice <= shopItem.size() + 1)
 			{

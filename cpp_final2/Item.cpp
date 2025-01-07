@@ -41,6 +41,10 @@ void Item::print()
 	{
 		cout << " Heal: " << heal<<endl;
 	}
+	if (mp != 0)
+	{
+		cout << "Restore Mp: " << mp << endl;
+	}
 	if (damage != 0)
 	{
 		cout << " Damage: " << damage<<endl;
@@ -51,22 +55,27 @@ void Item::print()
 	}
 	cout << endl;
 }
-void Item::addItemToInventory(Player& p, Item& i)
+void Item::addItemToInventory(Player& p, Item& item)
 {
+	bool added = false;
 	if (p.getInventor() == NULL)
 	{
-		p.getInventor()->insert(make_pair(i.name, i));
+		p.addItem(item);
 	}
 	else
 	{
-		auto it = p.getInventor()->find(i.name);
-		if (it != p.getInventor()->end())
+		for (int i = 0; i < p.getInventor()->size(); i++)
 		{
-			it->second.amount++;
+			if (p.getInventor()->at(i).getName() == item.getName())
+			{
+				added = true;
+				p.getInventor()->at(i).addAmount();
+				break;
+			}
 		}
-		else
+		if (!added)
 		{
-			p.getInventor()->insert(make_pair(i.name, i));
+			p.addItem(item);
 		}
 	}
 }
@@ -83,4 +92,8 @@ void Item::minusItemAmount()
 int Item::getGold() const
 {
 	return gold;
+}
+void Item::addAmount()
+{
+	amount += 1;
 }

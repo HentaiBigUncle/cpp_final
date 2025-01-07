@@ -122,7 +122,7 @@ void maze::calculateEdge()
 }
 void maze::print_instruction()
 {
-	cout << "Control: w(up) a(left) s(down) d(right) z(check stats)" << endl;
+	cout << "Control: w(up) a(left) s(down) d(right) | z(check stats) x(check equipment) c(equip equipment) v(use Item)" << endl;
 }
 void maze::print_maze()
 {
@@ -140,8 +140,9 @@ void maze::generateChest(Player& p)
 	{
 		x = rand() % (edge - 2) + 1;
 		y = rand() % (edge - 2) + 1;
-		if (maps[y][x] != ' ')
+		if (maps[y][x] == ' ')
 		{
+			maps[y][x] = '?';
 			chests[y][x] = true;
 			limit -= 1;
 		}
@@ -156,8 +157,9 @@ void maze::generateEnemy(Player& p)
 	{
 		x = rand() % (edge - 2) + 1;
 		y = rand() % (edge - 2) + 1;
-		if (maps[y][x] != ' ')
+		if (maps[y][x] == ' ')
 		{
+			maps[y][x] = '?';
 			enemies[y][x] = true;
 			limit -= 1;
 		}
@@ -172,8 +174,9 @@ void maze::generateTrap(Player& p)
 	{
 		x = rand() % (edge - 2) + 1;
 		y = rand() % (edge - 2) + 1;
-		if (maps[y][x] != ' ')
+		if (maps[y][x] == ' ')
 		{
+			maps[y][x] = '?';
 			traps[y][x] = true;
 			limit -= 1;
 		}
@@ -188,8 +191,9 @@ void maze::generateEvents(Player& p)
 	{
 		x = rand() % (edge - 2) + 1;
 		y = rand() % (edge - 2) + 1;
-		if (maps[y][x] != ' ')
+		if (maps[y][x] == ' ')
 		{
+			maps[y][x] = '?';
 			events[y][x] = true;
 			limit -= 1;
 		}
@@ -199,69 +203,101 @@ void maze::check(int x, int y, chest& c, event& e, Player& p, enemy& ene, battle
 { 
 	if (chests[y][x])
 	{
+		print_maze();
 		chests[y][x] = false;
 		c.OpenChest(p);
 	}
 	else if (enemies[y][x])
 	{
+		print_maze();
 		enemies[y][x] = false;
 		b.StartBattle(ene, p);
 	}
 	else if (events[y][x])
 	{
+		print_maze();
 		events[y][x] = false;
-		e.occurEvent(p);
+		e.occurEvent(p, b);
 	}
 	else if (traps[y][x])
 	{
+		print_maze();
 		traps[y][x] = false;
 		t.triggerTrap(p);
 	}
-	else if (p.getX() == edge - 2 && p.getY() - 2)
+	else if (p.getX() == edge - 2 && p.getY() == edge - 2)
 	{
+		print_maze();
 		b.bossFight(bs, p);
 	}
 	else
 	{
+		print_maze();
 		cout << "Nothing here." << endl;
 	}
 }
-void maze::move(chest& ch, event& e, Player& p , enemy& ene, battle& b, trap& t, boss& bs)
+void maze::move(chest& ch, event& e, Player& p , vector<enemy>& ene, battle& b, trap& t, boss& bs)
 {
 	char c;
-	while (!bs.getDie() && !p.getDie())
+	print_maze();
+	while (true)
 	{
+		if (p.getDie())
+			return;
+		else if (bs.getDie())
+			return;
+		enemy ee = generateRandomEnemy(ene);
 		print_instruction();
 		while (!_kbhit()) {}
 		c = _getch();
 		system("cls");
 		if (c == 'd' && maps[p.getY()][p.getX() + 1] != '#')
 		{
+			maps[p.getY()][p.getX()] = ' ';
 			maps[p.getY()][p.getX() + 1] = 'P';
-			check(p.getX() + 1, p.getY(), ch, e, p, ene, b, t, bs);
 			p.changeX(1);
+			check(p.getX(), p.getY(), ch, e, p, ee, b, t, bs);
 		}
 		else if (c == 'w' && maps[p.getY() - 1][p.getX()] != '#')
 		{
+			maps[p.getY()][p.getX()] = ' ';
 			maps[p.getY() - 1][p.getX()] = 'P';
-			check(p.getX(), p.getY() - 1, ch, e, p, ene, b, t, bs);
 			p.changeY(-1);
+			check(p.getX(), p.getY(), ch, e, p, ee, b, t, bs);
 		}
 		else if (c == 'a' && maps[p.getY()][p.getX() - 1] != '#')
 		{
+			maps[p.getY()][p.getX()] = ' ';
 			maps[p.getY()][p.getX() - 1] = 'P';
-			check(p.getX() - 1, p.getY(), ch, e, p, ene, b, t, bs);
 			p.changeX(-1);
+			check(p.getX(), p.getY(), ch, e, p, ee, b, t, bs);
 		}
 		else if (c == 's' && maps[p.getY() + 1][p.getX()] != '#')
 		{
+			maps[p.getY()][p.getX()] = ' ';
 			maps[p.getY() + 1][p.getX()] = 'P';
-			check(p.getX(), p.getY() + 1, ch, e, p, ene, b, t, bs);
 			p.changeY(1);
+			check(p.getX(), p.getY(), ch, e, p, ee, b, t, bs);
 		}
 		else if (c == 'z')
 		{
+			print_maze();
 			p.print();
+		}
+		else if (c == 'x')
+		{
+			print_maze();
+			p.displayEquipment();
+		}
+		else if (c == 'c')
+		{
+			print_maze();
+			p.Equip(p);
+		}
+		else if (c == 'v')
+		{
+			print_maze();
+			p.useItem(p, ee);
 		}
 		else
 		{
@@ -269,4 +305,11 @@ void maze::move(chest& ch, event& e, Player& p , enemy& ene, battle& b, trap& t,
 			cout << "wrong try again" << endl;
 		}
 	}
+}
+enemy maze::generateRandomEnemy(vector<enemy>& e)
+{
+	int i = 0;
+	srand(time(NULL));
+	i = rand() % e.size();
+	return e[i];
 }

@@ -49,9 +49,17 @@ public:
 	void changeHp(int);
 	void changeMp(int);
 
+	void minusMaxHp(int);
+	void minusMaxMp(int);
+	void minusDfs(int);
+	void minusMdfs(int);
+	void minusAtk(int);
+	void minusMatk(int);
+
 	void dieCheck();
-	virtual void displaySkill(Player&) {};
-	virtual void useSkill(enemy&, Player&) {};
+	void display(Player&) { cout << "hee"; }
+	virtual void displaySkill(Player&) const {};
+	virtual void useSkill(enemy&, Player&) const {};
 	void print();
 };
 

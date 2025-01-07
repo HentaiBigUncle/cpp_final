@@ -2,6 +2,7 @@
 #include "character.h"
 #include<iostream>
 #include<cmath>
+#include<string>
 
 using namespace std;
 
@@ -67,6 +68,32 @@ void character::changeMp(int m)
 	mp = max(0, mp + m);
 	mp = min(mp, maxMp);
 }
+
+void character::minusMaxHp(int h)
+{
+	maxHp -= h;
+}
+void character::minusMaxMp(int m)
+{
+	maxMp -= m;
+}
+void character::minusAtk(int a)
+{
+	atk -= a;
+}
+void character::minusMatk(int ma)
+{
+	magicalAtk -= ma;
+}
+void character::minusDfs(int d)
+{
+	dfs -= d;
+}
+void character::minusMdfs(int m)
+{
+	magicalDfs -= m;
+}
+
 //need to classify mAtk and Atk
 int character::ReceiveDamage(int damage, string type) 
 {
@@ -74,7 +101,7 @@ int character::ReceiveDamage(int damage, string type)
 	if (type == "magic")
 	{
 		_damage = max(0, damage - magicalDfs);
-		cout << "You receive magical damage " << _damage << " magical damage" << endl;
+		cout << "You receive " << _damage << " magical damage" << endl;
 	}
 	else if (type == "atk")
 	{
