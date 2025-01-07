@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void GameManager::level1(maze& m, Player& p, Item& i, enemy& en, battle& b, event& e, chest& c, trap& t, boss& bs)
+void GameManager::level1(maze& m, Player& p, Item& i, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
 {
 	while (!p.getLevel1())
 	{
@@ -18,7 +18,7 @@ void GameManager::level1(maze& m, Player& p, Item& i, enemy& en, battle& b, even
 		}
 	}
 }
-void GameManager::level2(maze& m, Player& p, Item& i, enemy& en, battle& b, event& e, chest& c, trap& t, boss& bs)
+void GameManager::level2(maze& m, Player& p, Item& i, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
 {
 	while (!p.getLevel2())
 	{
@@ -32,7 +32,7 @@ void GameManager::level2(maze& m, Player& p, Item& i, enemy& en, battle& b, even
 		}
 	}
 }
-void GameManager::level3(maze& m, Player& p, Item& i, enemy& en, battle& b, event& e, chest& c, trap& t, boss& bs)
+void GameManager::level3(maze& m, Player& p, Item& i, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
 {
 	while (!p.getLevel3())
 	{
@@ -46,7 +46,7 @@ void GameManager::level3(maze& m, Player& p, Item& i, enemy& en, battle& b, even
 		}
 	}
 }
-void GameManager::level4(maze& m, Player& p, Item& i, enemy& en, battle& b, event& e, chest& c, trap& t, boss& bs)
+void GameManager::level4(maze& m, Player& p, Item& i, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
 {
 	while (!p.getLevel4())
 	{
@@ -85,9 +85,9 @@ void GameManager::openShop(shop& s, Player& p)
 			{
 				cout << "Invalid choice" << endl;
 				cin >> com;
-				isFirst = false;
 			}
 			s.purchaseEquipmentItems(com, p);
+			isFirst = false;
 		}
 		else if (c == 'N')
 		{
@@ -95,13 +95,4 @@ void GameManager::openShop(shop& s, Player& p)
 		}
 	}
 	cout << "Glad to see you again" << endl;
-}
-
-void GameManager::addEnemy(enemy& e)
-{
-	AllEnemy.push_back(e);
-}
-void GameManager::clearEnemy()
-{
-	AllEnemy.clear();
 }

@@ -21,12 +21,12 @@ void Equipment::AddProperty(Player& p)
 }
 void Equipment::MinusProperty(Player& p)
 {
-	p.getCharacter()->changeAtk(-addAtk);
-	p.getCharacter()->changeDfs(-addDfs);
-	p.getCharacter()->changeMagicalAtk(-addMagicalAtk);
-	p.getCharacter()->changeMagicDfs(-addMagicalDFs);
-	p.getCharacter()->changeMaxHp(-addMaxHp);
-	p.getCharacter()->changeMaxMp(-addMaxMp);
+	p.getCharacter()->minusAtk(addAtk);
+	p.getCharacter()->minusDfs(addDfs);
+	p.getCharacter()->minusMatk(addMagicalAtk);
+	p.getCharacter()->minusMdfs(addMagicalDFs);
+	p.getCharacter()->minusMaxHp(addMaxHp);
+	p.getCharacter()->minusMaxMp(addMaxMp);
 }
 void Equipment::print()
 {
@@ -61,3 +61,4 @@ int Equipment::getGold()
 	return gold;
 }
 string Equipment::getName() { return name; }
+string Equipment::getType() { return type; }

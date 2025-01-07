@@ -9,7 +9,7 @@ warrior::warrior(int mHp, int mMp, int a, int mAtk,  int d, int mDfs, string t) 
 {
 
 }
-void warrior::displaySkill(Player& p)
+void warrior::displaySkill(Player& p) const
 {
 	cout << "Available Skills:" << endl;
 	cout << "1. Strong Attack" << endl;
@@ -20,7 +20,7 @@ void warrior::displaySkill(Player& p)
 	if (p.getLevel() >= 10)
 		cout << "4. Holy Attack" << endl;
 }
-void warrior::doubleAtk(enemy& e, Player& p)
+void warrior::doubleAtk(enemy& e, Player& p) const
 {
 	if (p.getLevel() >= 3 && p.getCharacter()->getMp() >= 10)
 	{
@@ -29,14 +29,14 @@ void warrior::doubleAtk(enemy& e, Player& p)
 	}
 	else if(p.getLevel() < 3)
 	{
-		cout << "Not enough level" << endl;
+		cout << "Not enough level, choose again" << endl;
 	}
 	else if (p.getCharacter()->getMp() < 10)
 	{
-		cout << "Not enough mp" << endl;
+		cout << "Not enough mp, choose again" << endl;
 	}
 }
-void warrior::strongAtk(enemy& e, Player& p)
+void warrior::strongAtk(enemy& e, Player& p) const
 {
 	if (p.getCharacter()->getMp() >= 5)
 	{
@@ -45,10 +45,10 @@ void warrior::strongAtk(enemy& e, Player& p)
 	}
 	else if (p.getCharacter()->getMp() < 5)
 	{
-		cout << "Not enough mp" << endl;
+		cout << "Not enough mp, choose again" << endl;
 	}
 }
-void warrior::holySword(enemy& e, Player& p)
+void warrior::holySword(enemy& e, Player& p) const
 {
 	if (p.getCharacter()->getMp() >= 50)
 	{
@@ -56,24 +56,36 @@ void warrior::holySword(enemy& e, Player& p)
 		e.ReceiveAttack(25 + p.getCharacter()->getMagicalAtk(), "magic");
 		p.getCharacter()->changeMp(-50);
 	}
-	else if (p.getLevel() < 50)
+	else if (p.getLevel() < 10)
 	{
-		cout << "Not enough level" << endl;
+		cout << "Not enough level, choose again" << endl;
 	}
 	else if (p.getCharacter()->getMp() < 25)
 	{
-		cout << "Not enough mp" << endl;
+		cout << "Not enough mp, choose again" << endl;
 	}
 }
-void warrior::healMyself(Player& p)
+void warrior::healMyself(Player& p) const
 {
-	p.getCharacter()->changeHp(20);
-	p.getCharacter()->changeMp(-5);
+	if (p.getLevel() >= 3 && p.getCharacter()->getMp() >= 5)
+	{
+		p.getCharacter()->changeHp(20);
+		p.getCharacter()->changeMp(-5);
+	}
+	else if (p.getLevel() < 3)
+	{
+		cout << "Not enough level, choose again" << endl;
+	}
+	else if (p.getCharacter()->getMp() < 5)
+	{
+		cout << "Not enough mp, choose again" << endl;
+	}
 }
-void warrior::useSkill(enemy& e, Player& p)
+void warrior::useSkill(enemy& e, Player& p) const
 {
 	int n = 0;
-	cout << "choose skill you want to use." << endl;
+	bool isUse = false;
+	cout << "choose skill you want to use. (5 = exit)" << endl;
 	displaySkill(p);
 	cin >> n;
 	if (n == 1)
@@ -84,6 +96,10 @@ void warrior::useSkill(enemy& e, Player& p)
 		doubleAtk(e, p);
 	else if (n == 4)
 		holySword(e, p);
+	else if (n == 5)
+	{
+		cout << "You choose to give up to use  skill" << endl;
+	}
 	else
-		cout << "no such skill is available" << endl;
+		cout << "no such skill is available, choose again" << endl;
 }

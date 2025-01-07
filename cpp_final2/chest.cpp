@@ -69,7 +69,7 @@ void chest::OpenChest(Player& p)
 		case 1:
 		{
 			int exp = rand() % 101 + 50;
-			p.changeCoin(exp);
+			p.changeExp(exp);
 			cout << "You found " << exp << " exp in the chest!" << endl;
 			break;
 		}
@@ -83,6 +83,18 @@ void chest::OpenChest(Player& p)
 		case 3:
 		{
 			Equipment newEquipment = generateEquipment();
+			cout << "You found " << newEquipment.getName() << endl;
+			if (newEquipment.getType() == "Helmet")
+				p.addHelmet(newEquipment);
+			else if (newEquipment.getType() == "Armor")
+				p.addArmor(newEquipment);
+			else if (newEquipment.getType() == "LegArmor")
+				p.addLeg_Armor(newEquipment);
+			else if (newEquipment.getType() == "Hand_Armor")
+				p.addHand_Armor(newEquipment);
+			else if (newEquipment.getType() == "Amulet")
+				p.addAmulet(newEquipment);
+			else if(newEquipment.getType() == "Sword")
 			break;
 		}
 		default:
