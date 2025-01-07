@@ -52,7 +52,7 @@ void dfs(int y, int x, vector<string> &map)
 			 if (y + dir[i].second == 1 && x + dir[i].first == 1)
 				 maps[y + dir[i].second][x + dir[i].first] = 'A';
 			dfs(y + dir[i].second, x + dir[i].first, map);
-			isuse[y + dir[i].second][x + dir[i].first] = 0;
+			//isuse[y + dir[i].second][x + dir[i].first] = 0;
 		}
 		if (n == 25)
 		{

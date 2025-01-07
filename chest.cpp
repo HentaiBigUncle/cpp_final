@@ -5,7 +5,7 @@
 
 using namespace std;
 
-// ÀH¾÷¥Í¦¨¸Ë³Æ
+// ï¿½Hï¿½ï¿½ï¿½Í¦ï¿½ï¿½Ë³ï¿½
 Item generateRandomItem() {
     vector<Item> possibleItems = {
         {"Sword", "A powerful sword", 10, 0},
@@ -18,31 +18,31 @@ Item generateRandomItem() {
     return possibleItems[randomIndex];
 }
 
-// ¶}±ÒÄ_½c¥\¯à¹ê²{
+// ï¿½}ï¿½ï¿½ï¿½_ï¿½cï¿½\ï¿½ï¿½ï¿½{
 void openChest(Player& player) {
     cout << "You found a chest! Opening it..." << endl;
 
-    // ÀH¾÷¥Í¦¨¼úÀyÃþ«¬
-    int rewardType = rand() % 3; // 0: ª÷¿ú, 1: ¸Ë³Æ, 2: «ì´_ HP
+    // ï¿½Hï¿½ï¿½ï¿½Í¦ï¿½ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½
+    int rewardType = rand() % 3; // 0: ï¿½ï¿½ï¿½ï¿½, 1: ï¿½Ë³ï¿½, 2: ï¿½ï¿½_ HP
     switch (rewardType) {
-    case 0: { // ª÷¿ú
-        int gold = rand() % 51 + 10; // ÀH¾÷Àò±o 10-60 ª÷¹ô
+    case 0: { // ï¿½ï¿½ï¿½ï¿½
+        int gold = rand() % 51 + 10; // ï¿½Hï¿½ï¿½ï¿½ï¿½o 10-60 ï¿½ï¿½ï¿½ï¿½
         player.coins += gold;
         cout << "You found " << gold << " coins in the chest!" << endl;
         break;
     }
-    case 1: { // ¸Ë³Æ
+    case 1: { // ï¿½Ë³ï¿½
         Item newItem = generateRandomItem();
         player.inventory.push_back(newItem);
         cout << "You found a " << newItem.name << " in the chest!" << endl;
         cout << "Description: " << newItem.description << endl;
         break;
     }
-    case 2: { // «ì´_ HP
-        int healAmount = rand() % 31 + 10; // ÀH¾÷«ì´_ 10-40 HP
+    case 2: { // ï¿½ï¿½_ HP
+        int healAmount = rand() % 31 + 10; // ï¿½Hï¿½ï¿½ï¿½ï¿½_ 10-40 HP
         player.hp += healAmount;
         cout << "You found a healing potion in the chest! Restored " << healAmount << " HP!" << endl;
         break;
     }
-    }
+    
 }
