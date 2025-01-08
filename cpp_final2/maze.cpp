@@ -133,7 +133,7 @@ void maze::print_maze()
 }
 void maze::generateChest(Player& p)
 {
-	int limit = 1 + 2 * (p.getLevel() - 1);
+	int limit = 1 + 2 * (p.getLevelOfMaze() - 1);
 	srand(time(NULL));
 	int x = 0, y = 0;
 	while (limit != 0)
@@ -150,7 +150,7 @@ void maze::generateChest(Player& p)
 }
 void maze::generateEnemy(Player& p)
 {
-	int limit = 1 + 2 * (p.getLevel() - 1);
+	int limit = 1 + 2 * (p.getLevelOfMaze() - 1);
 	srand(time(NULL));
 	int x = 0, y = 0;
 	while (limit != 0)
@@ -167,7 +167,7 @@ void maze::generateEnemy(Player& p)
 }
 void maze::generateTrap(Player& p)
 {
-	int limit = 1 + p.getLevel() - 1;
+	int limit = 1 + p.getLevelOfMaze() - 1;
 	srand(time(NULL));
 	int x = 0, y = 0;
 	while (limit != 0)
@@ -184,7 +184,7 @@ void maze::generateTrap(Player& p)
 }
 void maze::generateEvents(Player& p)
 {
-	int limit = 1 + p.getLevel() - 1;
+	int limit = 1 + p.getLevelOfMaze() - 1;
 	srand(time(NULL));
 	int x = 0, y = 0;
 	while (limit != 0)
@@ -203,35 +203,41 @@ void maze::check(int x, int y, chest& c, event& e, Player& p, enemy& ene, battle
 { 
 	if (chests[y][x])
 	{
+		cout << "Level: " << p.getLevelOfMaze() << endl;
 		print_maze();
 		chests[y][x] = false;
 		c.OpenChest(p);
 	}
 	else if (enemies[y][x])
 	{
+		cout << "Level: " << p.getLevelOfMaze() << endl;
 		print_maze();
 		enemies[y][x] = false;
 		b.StartBattle(ene, p);
 	}
 	else if (events[y][x])
 	{
+		cout << "Level: " << p.getLevelOfMaze() << endl;
 		print_maze();
 		events[y][x] = false;
 		e.occurEvent(p, b);
 	}
 	else if (traps[y][x])
 	{
+		cout << "Level: " << p.getLevelOfMaze() << endl;
 		print_maze();
 		traps[y][x] = false;
 		t.triggerTrap(p);
 	}
 	else if (p.getX() == edge - 2 && p.getY() == edge - 2)
 	{
+		cout << "Level: " << p.getLevelOfMaze() << endl;
 		print_maze();
 		b.bossFight(bs, p);
 	}
 	else
 	{
+		cout << "Level: " << p.getLevelOfMaze() << endl;
 		print_maze();
 		cout << "Nothing here." << endl;
 	}
@@ -239,6 +245,7 @@ void maze::check(int x, int y, chest& c, event& e, Player& p, enemy& ene, battle
 void maze::move(chest& ch, event& e, Player& p , vector<enemy>& ene, battle& b, trap& t, boss& bs)
 {
 	char c;
+	cout << "Level: " << p.getLevelOfMaze() << endl;
 	print_maze();
 	while (true)
 	{
@@ -281,26 +288,31 @@ void maze::move(chest& ch, event& e, Player& p , vector<enemy>& ene, battle& b, 
 		}
 		else if (c == 'z')
 		{
+			cout << "Level: " << p.getLevelOfMaze() << endl;
 			print_maze();
 			p.print();
 		}
 		else if (c == 'x')
 		{
+			cout << "Level: " << p.getLevelOfMaze() << endl;
 			print_maze();
 			p.displayEquipment();
 		}
 		else if (c == 'c')
 		{
+			cout << "Level: " << p.getLevelOfMaze() << endl;
 			print_maze();
 			p.Equip(p);
 		}
 		else if (c == 'v')
 		{
+			cout << "Level: " << p.getLevelOfMaze() << endl;
 			print_maze();
 			p.useItem(p, ee);
 		}
 		else
 		{
+			cout << "Level: " << p.getLevelOfMaze() << endl;
 			print_maze();
 			cout << "wrong try again" << endl;
 		}

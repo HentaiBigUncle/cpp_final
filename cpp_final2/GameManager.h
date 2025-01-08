@@ -27,10 +27,10 @@ using namespace std;
 class GameManager
 {
 public:
-	void level1(maze&, Player&, Item&, vector<enemy> &, battle&, event&, chest&, trap&, boss&);
-	void level2(maze&, Player&, Item&, vector<enemy>&, battle&, event&, chest&, trap&, boss&);
-	void level3(maze&, Player&, Item&, vector<enemy>&, battle&, event&, chest&, trap&, boss&);
-	void level4(maze&, Player&, Item&, vector<enemy>&, battle&, event&, chest&, trap&, boss&);
+	void level1(maze&, Player&, vector<enemy> &, battle&, event&, chest&, trap&, boss&);
+	void level2(maze&, Player&, vector<enemy>&, battle&, event&, chest&, trap&, boss&);
+	void level3(maze&, Player&, vector<enemy>&, battle&, event&, chest&, trap&, boss&);
+	void level4(maze&, Player&, vector<enemy>&, battle&, event&, chest&, trap&, boss&);
 	void openShop(shop&, Player&);
 };
 

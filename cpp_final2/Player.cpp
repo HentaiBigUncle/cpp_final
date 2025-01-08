@@ -159,6 +159,7 @@ bool Player::getLevel4() { return levelFourComplete; }
 int Player::getX() { return pX; }
 int Player::getY() { return pY; }
 bool Player::getDie() { return isDie; }
+string Player::getName() { return name; }
 vector<Equipment> Player::getHelmet() { return helmet; }
 vector<Equipment> Player::getArmor() { return armor; }
 vector<Equipment> Player::getLeg_Armor() { return leg_armor; }
@@ -174,6 +175,15 @@ void Player::changeLevel4() { levelFourComplete = true; }
 void Player::changeX(int x) { pX += x; }
 void Player::changeY(int y) { pY += y; }
 void Player::changeDeath() { isDie = true; }
+void Player::changeCharacter(character* c) { chara = c; }
+void Player::changeName(string str) { name = str; }
+void Player::changeType(string str) { role = str; }
+//reset
+void Player::resetXandY()
+{
+	pX = 1;
+	pY = 1;
+}
 //display equipment
 void Player::displayHelmet()
 {
@@ -371,7 +381,7 @@ void Player::EquipLegArmor(Player& p)
 		{
 			if (equipment[2] == 0)
 			{
-				cout << "You equip " << leg_armor[n - 1].getName();
+				cout << "You equip " << leg_armor[n - 1].getName()<<endl;
 				equipment[2] = &leg_armor[n - 1];
 				equipment[2]->AddProperty(p);
 				break;

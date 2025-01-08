@@ -14,8 +14,9 @@ void trap::triggerTrap(Player& player)
 			player.getCharacter()->changeHp(-damage);
 			cout << "Oh No, you step on the spine: -" << damage << "hp" << endl;
 			player.getCharacter()->dieCheck();
-			if (player.getDie())
+			if (player.getCharacter()->getDie())
 			{
+				player.changeDeath();
 				cout << "You die" << endl;
 			}
 			break;
@@ -26,8 +27,9 @@ void trap::triggerTrap(Player& player)
 			player.getCharacter()->changeHp(-damage);
 			cout << "Oh No, you are hurt by throwing knife: -" << damage << "hp" << endl;
 			player.getCharacter()->dieCheck();
-			if (player.getDie())
+			if (player.getCharacter()->getDie())
 			{
+				player.changeDeath();
 				cout << "You die" << endl;
 			}
 			break;
@@ -38,8 +40,9 @@ void trap::triggerTrap(Player& player)
 			player.getCharacter()->changeHp(-damage);
 			cout << "Oh No, you accidently fall down: -" << damage << "hp" << endl;
 			player.getCharacter()->dieCheck();
-			if (player.getDie())
+			if (player.getCharacter()->getDie())
 			{
+				player.changeDeath();
 				cout << "You die" << endl;
 			}
 			break;
@@ -50,8 +53,9 @@ void trap::triggerTrap(Player& player)
 			player.getCharacter()->changeHp(-damage);
 			cout << "Oh No, you fall into the lava: -" << damage << "hp" << endl;
 			player.getCharacter()->dieCheck();
-			if (player.getDie())
+			if (player.getCharacter()->getDie())
 			{
+				player.changeDeath();
 				cout << "You die" << endl;
 			}
 			break;
@@ -62,8 +66,9 @@ void trap::triggerTrap(Player& player)
 			player.getCharacter()->changeHp(-damage);
 			cout << "Oh No, you are hurt by sharp knife: -" << damage << "hp" << endl;
 			player.getCharacter()->dieCheck();
-			if (player.getDie())
+			if (player.getCharacter()->getDie())
 			{
+				player.changeDeath();
 				cout << "You die" << endl;
 			}
 			break;

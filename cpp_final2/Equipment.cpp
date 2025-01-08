@@ -27,6 +27,7 @@ void Equipment::MinusProperty(Player& p)
 	p.getCharacter()->minusMdfs(addMagicalDFs);
 	p.getCharacter()->minusMaxHp(addMaxHp);
 	p.getCharacter()->minusMaxMp(addMaxMp);
+	p.getCharacter()->changeHp(0);
 }
 void Equipment::print()
 {

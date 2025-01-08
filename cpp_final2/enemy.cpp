@@ -58,7 +58,10 @@ bool enemy::getDie()
 {
 	return isDie;
 }
-
+int enemy::getMaxHp()
+{
+	return maxHp;
+}
 void enemy::ReceiveAttack(int damage, string str)
 {
 	if (str == "magic")

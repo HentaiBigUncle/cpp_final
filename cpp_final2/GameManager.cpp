@@ -4,59 +4,68 @@
 
 using namespace std;
 
-void GameManager::level1(maze& m, Player& p, Item& i, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
+void GameManager::level1(maze& m, Player& p, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
 {
-	while (!p.getLevel1())
+	if (p.getLevel1())
+		return;
+	m.move(c, e, p, en, b, t, bs);
+	bs.dieCheck();
+	if (bs.getDie())
 	{
-		m.print_maze();
-		m.move(c, e, p, en, b, t, bs);
-		bs.dieCheck();
-		if (bs.getDie())
-		{
-			p.changeLevel1();
-			cout << "Congratulations! you pass level one" << endl;
-		}
+		p.changeLevel1();
+		cout << "Congratulations! you pass level one" << endl;
+		p.changeLevelOfMaze();
 	}
 }
-void GameManager::level2(maze& m, Player& p, Item& i, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
+void GameManager::level2(maze& m, Player& p, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
 {
-	while (!p.getLevel2())
+	if (p.getLevel2())
+		return;
+	if (!p.getLevel1())
 	{
-		m.print_maze();
+		p.resetXandY();
 		m.move(c, e, p, en, b, t, bs);
 		bs.dieCheck();
 		if (bs.getDie())
 		{
 			p.changeLevel2();
 			cout << "Congratulations! you pass level two" << endl;
+			p.changeLevelOfMaze();
 		}
 	}
 }
-void GameManager::level3(maze& m, Player& p, Item& i, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
+void GameManager::level3(maze& m, Player& p, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
 {
-	while (!p.getLevel3())
+	if (p.getLevel3())
+		return;
+	if (!p.getLevel2())
 	{
-		m.print_maze();
+		p.resetXandY();
 		m.move(c, e, p, en, b, t, bs);
 		bs.dieCheck();
 		if (bs.getDie())
 		{
 			p.changeLevel3();
 			cout << "Congratulations! you pass level three" << endl;
+			p.changeLevelOfMaze();
 		}
 	}
 }
-void GameManager::level4(maze& m, Player& p, Item& i, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
+void GameManager::level4(maze& m, Player& p, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
 {
-	while (!p.getLevel4())
+	if (p.getLevel4())
+		return;
+	if (!p.getLevel3())
 	{
-		m.print_maze();
+		p.resetXandY();
 		m.move(c, e, p, en, b, t, bs);
 		bs.dieCheck();
 		if (bs.getDie())
 		{
 			p.changeLevel4();
 			cout << "Congratulations! you pass level four" << endl;
+			cout << "Thanks for playing" << endl;
+			p.changeLevelOfMaze();
 		}
 	}
 }
@@ -64,6 +73,11 @@ void GameManager::openShop(shop& s, Player& p)
 {
 	char c;
 	bool isShopping = true, isFirst = true;
+	cout << "enter any char to open shop" << endl;
+	char ss;
+	while (!_kbhit()) {}
+	ss = _getch();
+	system("cls");
 	cout << "Welcome, is there any thing you want" << endl;
 	cout << "Y/N" << endl;
 	while (isShopping)
@@ -92,7 +106,12 @@ void GameManager::openShop(shop& s, Player& p)
 		else if (c == 'N')
 		{
 			isShopping = false;
+			break;
 		}
 	}
 	cout << "Glad to see you again" << endl;
+	cout << "enter any char to continue to "<<p.getLevelOfMaze()<< endl;
+	while (!_kbhit()) {}
+	ss = _getch();
+	system("cls");
 }
