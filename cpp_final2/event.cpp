@@ -28,6 +28,12 @@ void event::occurEvent(Player& p, battle& b)
 		int hurt = rand() % 5 + 1;
 		p.getCharacter()->changeHp(-hurt);
 		cout << "you hurt yourself " << "-" << hurt << " hp" << endl;
+		p.getCharacter()->dieCheck();
+		if (p.getDie())
+		{
+			p.changeDeath();
+			cout << "You die" << endl;
+		}
 	}
 	else if (n == 3)
 	{

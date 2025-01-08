@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="來源檔案">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="標頭檔">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="標頭檔\資源檔">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="標頭檔\helemt">
+      <UniqueIdentifier>{cd41731f-80bd-428a-8dba-25106e0ebc2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\armor">
+      <UniqueIdentifier>{f79598c5-fccc-4444-99a9-f564ba22ae94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\Leg_Armor">
+      <UniqueIdentifier>{29331144-01c5-464a-b931-b1a242fdbb31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\Hand_Armor">
+      <UniqueIdentifier>{26ebf65c-0cfd-462d-a3a0-30c4ae82f96f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\Sword">
+      <UniqueIdentifier>{306b470b-42bf-4233-bf76-685d58bd1afe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\Amulet">
+      <UniqueIdentifier>{ea817e8a-5bc6-4f8d-a11a-0d0c3a281c46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\Items">
+      <UniqueIdentifier>{22916163-0097-4431-bbb9-64994eca1cb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\bosses">
+      <UniqueIdentifier>{3feb1364-cd3d-41e3-b691-8298c33c6fbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\enemies">
+      <UniqueIdentifier>{8fa7c577-74ad-4368-8653-a2bc693980e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\character">
+      <UniqueIdentifier>{6b4dce06-8b83-4507-8cb8-a42dac46f791}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cpp_final.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="maze.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="character.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="save_load.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="shop.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="chest.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="trap.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="event.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="battle.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="warrior.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Slime.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipment.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthPotion.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Leather_helmet.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Leather_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Leather_Leg_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Leather_hand_armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Stone_helmet.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Stone_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Stone_Leg_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Stone_Hand_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Iron_Helmet.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Iron_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Iron_Leg_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Iron_Hand_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Gold_Helmet.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Gold_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Gold_Leg_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Gold_Hand_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Diamond_Helmet.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Diamond_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Diamond_Leg_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Diamond_Hand_Armor.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Stone_Sword.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Iron_Sword.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Wood_Sword.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Gold_Sword.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Diamond_Sword.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Zenith.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Heart_Amulet.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Magic_Amulet.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Strength_Amulet.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Dfs_Amulet.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Almighty_Amulet.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="MagicPotion.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="boss.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="StrongSkeleton.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="NamelessKing.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Pontif_Salivon.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="LostPaladin.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="stone_knight.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="GiantBat.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="GoldenFlower.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="DarkKnight.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="LostKinght.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="SalivonCultist.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="EvilPriest.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="DiamondCrystalMob.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="MagicSnake.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="dragonSlayer.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Paladin.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="enchanter.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="maze.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="save_load.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="shop.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="character.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="chest.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="trap.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="battle.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Leather_helmet.h">
+      <Filter>標頭檔\helemt</Filter>
+    </ClInclude>
+    <ClInclude Include="Leather_Armor.h">
+      <Filter>標頭檔\armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Leather_Leg_Armor.h">
+      <Filter>標頭檔\Leg_Armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Leather_hand_armor.h">
+      <Filter>標頭檔\Hand_Armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Stone_helmet.h">
+      <Filter>標頭檔\helemt</Filter>
+    </ClInclude>
+    <ClInclude Include="Stone_Armor.h">
+      <Filter>標頭檔\armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Stone_Leg_Armor.h">
+      <Filter>標頭檔\Leg_Armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Stone_Hand_Armor.h">
+      <Filter>標頭檔\Hand_Armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Iron_Helmet.h">
+      <Filter>標頭檔\helemt</Filter>
+    </ClInclude>
+    <ClInclude Include="Iron_Armor.h">
+      <Filter>標頭檔\armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Iron_Leg_Armor.h">
+      <Filter>標頭檔\Leg_Armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Iron_Hand_Armor.h">
+      <Filter>標頭檔\Hand_Armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Gold_Helmet.h">
+      <Filter>標頭檔\helemt</Filter>
+    </ClInclude>
+    <ClInclude Include="Gold_Armor.h">
+      <Filter>標頭檔\armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Gold_Leg_Armor.h">
+      <Filter>標頭檔\Leg_Armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Gold_Hand_Armor.h">
+      <Filter>標頭檔\Hand_Armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Diamond_Helmet.h">
+      <Filter>標頭檔\helemt</Filter>
+    </ClInclude>
+    <ClInclude Include="Diamond_Armor.h">
+      <Filter>標頭檔\armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Diamond_Leg_Armor.h">
+      <Filter>標頭檔\Leg_Armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Diamond_Hand_Armor.h">
+      <Filter>標頭檔\Hand_Armor</Filter>
+    </ClInclude>
+    <ClInclude Include="Stone_Sword.h">
+      <Filter>標頭檔\Sword</Filter>
+    </ClInclude>
+    <ClInclude Include="Iron_Sword.h">
+      <Filter>標頭檔\Sword</Filter>
+    </ClInclude>
+    <ClInclude Include="Wood_Sword.h">
+      <Filter>標頭檔\Sword</Filter>
+    </ClInclude>
+    <ClInclude Include="Gold_Sword.h">
+      <Filter>標頭檔\Sword</Filter>
+    </ClInclude>
+    <ClInclude Include="Diamond_Sword.h">
+      <Filter>標頭檔\Sword</Filter>
+    </ClInclude>
+    <ClInclude Include="Zenith.h">
+      <Filter>標頭檔\Sword</Filter>
+    </ClInclude>
+    <ClInclude Include="Heart_Amulet.h">
+      <Filter>標頭檔\Amulet</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthPotion.h">
+      <Filter>標頭檔\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Magic_Amulet.h">
+      <Filter>標頭檔\Amulet</Filter>
+    </ClInclude>
+    <ClInclude Include="Strength_Amulet.h">
+      <Filter>標頭檔\Amulet</Filter>
+    </ClInclude>
+    <ClInclude Include="Dfs_Amulet.h">
+      <Filter>標頭檔\Amulet</Filter>
+    </ClInclude>
+    <ClInclude Include="Almighty_Amulet.h">
+      <Filter>標頭檔\Amulet</Filter>
+    </ClInclude>
+    <ClInclude Include="MagicPotion.h">
+      <Filter>標頭檔\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Slime.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="boss.h">
+      <Filter>標頭檔\bosses</Filter>
+    </ClInclude>
+    <ClInclude Include="StrongSkeleton.h">
+      <Filter>標頭檔\bosses</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="NamelessKing.h">
+      <Filter>標頭檔\bosses</Filter>
+    </ClInclude>
+    <ClInclude Include="Pontif_Salivon.h">
+      <Filter>標頭檔\bosses</Filter>
+    </ClInclude>
+    <ClInclude Include="LostPaladin.h">
+      <Filter>標頭檔\bosses</Filter>
+    </ClInclude>
+    <ClInclude Include="DarkKnight.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="DiamondCrystalMob.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="EvilPriest.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="LostKinght.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="MagicSnake.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="SalivonCultist.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="GoldenFlower.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="GiantBat.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="stone_knight.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonSlayer.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Paladin.h">
+      <Filter>標頭檔\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="warrior.h">
+      <Filter>標頭檔\character</Filter>
+    </ClInclude>
+    <ClInclude Include="enchanter.h">
+      <Filter>標頭檔\character</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

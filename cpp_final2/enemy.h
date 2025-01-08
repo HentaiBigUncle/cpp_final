@@ -41,6 +41,7 @@ public:
 	int getMagicAtk();
 	int getAtk();
 	bool getDie();
+	int getMaxHp();
 	string getName();
 
 	void changeLv(int);

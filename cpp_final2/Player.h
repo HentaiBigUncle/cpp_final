@@ -50,6 +50,7 @@ public:
 	int getLevel();
 	int getCoin();
 	bool getDie();
+	string getName();
 	character* getCharacter();
 	//change
 	void changeLevelOfMaze();
@@ -109,7 +110,11 @@ public:
 	int getY();
 	void changeX(int);
 	void changeY(int);
+	void resetXandY();
 
+	void changeName(string);
+	void changeType(string);
+	void changeCharacter(character*);
 	void changeLevel1();
 	void changeLevel2();
 	void changeLevel3();

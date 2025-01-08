@@ -28,6 +28,7 @@ public:
 	//set
 	void setHp(int);
 	void setMp(int);
+
 	//get
 	int getAtk();
 	int getHp();
@@ -58,8 +59,8 @@ public:
 
 	void dieCheck();
 	void display(Player&) { cout << "hee"; }
-	virtual void displaySkill(Player&) const {};
-	virtual void useSkill(enemy&, Player&) const {};
+	virtual void displaySkill(Player&)  {};
+	virtual void useSkill(enemy&, Player&)  {};
 	void print();
 };
 

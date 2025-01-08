@@ -7,7 +7,7 @@ void battle::StartBattle(enemy& e, Player& p)
 	while (p.getCharacter()->getHp() > 0 && e.getHp() > 0)
 	{
 		cout << "--- Battle Menu---" << endl;
-		cout << "1. Attack\n2. Use Skill\n3. Use Item\n4. Watch Stats\n";
+		cout << "1. Attack\n2. Use Skill\n3. Use Item\n4. Watch Stats and enemy hp\n";
 		int choice;
 		cin >> choice;
 
@@ -81,8 +81,9 @@ void battle::StartBattle(enemy& e, Player& p)
 			}
 			case 4:
 			{
-				cout << "You choose to watch your stats" << endl;
+				cout << "You choose to watch your stats and enemy hp" << endl;
 				p.getCharacter()->print();
+				cout << "Enemy hp: " << e.getHp()<<"/"<<e.getMaxHp();
 				break;
 			}
 			default:
@@ -99,7 +100,7 @@ void battle::bossFight(boss& b, Player& p)
 	while (p.getCharacter()->getHp() > 0 && b.getHp() > 0)
 	{
 		cout << "--- Battle Menu---" << endl;
-		cout << "1. Attack\n2. Use Skill\n3. Use Item\n4. Watch Stats\n";
+		cout << "1. Attack\n2. Use Skill\n3. Use Item\n4. Watch Stats and enemy hp\n";
 		int choice;
 		cin >> choice;
 
@@ -166,8 +167,9 @@ void battle::bossFight(boss& b, Player& p)
 		}
 		case 4:
 		{
-			cout << "You choose to watch your stats" << endl;
+			cout << "You choose to watch your stats and boss hp" << endl;
 			p.getCharacter()->print();
+			cout << "Boss hp: " << b.getHp() <<"/"<<b.getMaxHp()<< endl;
 			break;
 		}
 		default:
