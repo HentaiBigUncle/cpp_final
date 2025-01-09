@@ -8,51 +8,17 @@ Item chest::generateItem()
 {
 	vector<Item> possibleItem =
 	{
-		//healthPotion,
+		healthPotion,
 		magicPotion
 	};
-	srand(time(NULL));
+	srand(time(nullptr));
 	int randIndex = rand() % possibleItem.size();
 	return possibleItem[randIndex];
 }
-Equipment chest::generateEquipment()
+/*Equipment chest::generateEquipment()
 {
-	vector<Equipment> possibleEquipment =
-	{
-		leather_helmet,
-		leather_Armor,
-		leather_leg_armor,
-		leather_hand_armor,
-		stone_helmet,
-		stone_armor,
-		stone_leg_armor,
-		stone_hand_armor,
-		iron_helmet,
-		iron_armor,
-		iron_leg_armor,
-		iron_hand_armor,
-		gold_helmet,
-		gold_armor,
-		gold_leg_armor,
-		gold_hand_armor,
-		diamond_helmet,
-		diamond_armor,
-		diamond_leg_armor,
-		diamond_hand_armor,
-		wood_swrod,
-		stone_sword,
-		iron_sword,
-		gold_sword,
-		diamond_sword,
-		heart_amulet,
-		magic_amulet,
-		strength_amulet,
-		dfs_amulet,
-	};
-	srand(time(NULL));
-	int randIndex = rand() % possibleEquipment.size();
-	return possibleEquipment[randIndex];
-}
+
+}*/
 void chest::OpenChest(Player& p)
 {
 	cout << "You found a chest! Opening it..." << endl;
@@ -77,24 +43,27 @@ void chest::OpenChest(Player& p)
 		{
 			Item newItem = generateItem();
 			cout << "You found " << newItem.getName() << endl;
-			newItem.addItemToInventory(p, newItem);
+			p.addItemToInventory(p, &newItem);
 			break;
 		}
 		case 3:
 		{
-			Equipment newEquipment = generateEquipment();
-			cout << "You found " << newEquipment.getName() << endl;
-			if (newEquipment.getType() == "Helmet")
+			srand(time(nullptr));
+			int randIndex = rand() % possibleEquipment.size();
+			Equipment* newEquipment = &possibleEquipment[randIndex];
+			cout << "You found " << newEquipment->getName() << endl;
+			if (newEquipment->getType() == "Helmet")
 				p.addHelmet(newEquipment);
-			else if (newEquipment.getType() == "Armor")
+			else if (newEquipment->getType() == "Armor")
 				p.addArmor(newEquipment);
-			else if (newEquipment.getType() == "LegArmor")
+			else if (newEquipment->getType() == "LegArmor")
 				p.addLeg_Armor(newEquipment);
-			else if (newEquipment.getType() == "Hand_Armor")
+			else if (newEquipment->getType() == "Hand_Armor")
 				p.addHand_Armor(newEquipment);
-			else if (newEquipment.getType() == "Amulet")
+			else if (newEquipment->getType() == "Amulet")
 				p.addAmulet(newEquipment);
-			else if(newEquipment.getType() == "Sword")
+			else if (newEquipment->getType() == "Sword")
+				p.addSword(newEquipment);
 			break;
 		}
 		default:

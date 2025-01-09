@@ -111,7 +111,7 @@ void maze::making_maze()
 	n = 0;
 	maps.assign(edge, "");
 	
-	srand(time(NULL));
+	srand(time(nullptr));
 	seed = rand() % 100;
 	setUp(x, y);
 	dfs(x, y, maps);
@@ -134,7 +134,7 @@ void maze::print_maze()
 void maze::generateChest(Player& p)
 {
 	int limit = 1 + 2 * (p.getLevelOfMaze() - 1);
-	srand(time(NULL));
+	srand(time(nullptr));
 	int x = 0, y = 0;
 	while (limit != 0)
 	{
@@ -151,7 +151,7 @@ void maze::generateChest(Player& p)
 void maze::generateEnemy(Player& p)
 {
 	int limit = 1 + 2 * (p.getLevelOfMaze() - 1);
-	srand(time(NULL));
+	srand(time(nullptr));
 	int x = 0, y = 0;
 	while (limit != 0)
 	{
@@ -168,7 +168,7 @@ void maze::generateEnemy(Player& p)
 void maze::generateTrap(Player& p)
 {
 	int limit = 1 + p.getLevelOfMaze() - 1;
-	srand(time(NULL));
+	srand(time(nullptr));
 	int x = 0, y = 0;
 	while (limit != 0)
 	{
@@ -185,7 +185,7 @@ void maze::generateTrap(Player& p)
 void maze::generateEvents(Player& p)
 {
 	int limit = 1 + p.getLevelOfMaze() - 1;
-	srand(time(NULL));
+	srand(time(nullptr));
 	int x = 0, y = 0;
 	while (limit != 0)
 	{
@@ -199,7 +199,7 @@ void maze::generateEvents(Player& p)
 		}
 	}
 }
-void maze::check(int x, int y, chest& c, event& e, Player& p, enemy& ene, battle& b, trap& t, boss& bs)
+void maze::check(int x, int y, chest& c, event& e, Player& p, enemy& ene, battle& b, trap& t, boss& bs, maze& m)
 { 
 	if (chests[y][x])
 	{
@@ -213,14 +213,14 @@ void maze::check(int x, int y, chest& c, event& e, Player& p, enemy& ene, battle
 		cout << "Level: " << p.getLevelOfMaze() << endl;
 		print_maze();
 		enemies[y][x] = false;
-		b.StartBattle(ene, p);
+		b.StartBattle(ene, p, m);
 	}
 	else if (events[y][x])
 	{
 		cout << "Level: " << p.getLevelOfMaze() << endl;
 		print_maze();
 		events[y][x] = false;
-		e.occurEvent(p, b);
+		e.occurEvent(p, b, m);
 	}
 	else if (traps[y][x])
 	{
@@ -233,7 +233,7 @@ void maze::check(int x, int y, chest& c, event& e, Player& p, enemy& ene, battle
 	{
 		cout << "Level: " << p.getLevelOfMaze() << endl;
 		print_maze();
-		b.bossFight(bs, p);
+		b.bossFight(bs, p, m);
 	}
 	else
 	{
@@ -242,7 +242,7 @@ void maze::check(int x, int y, chest& c, event& e, Player& p, enemy& ene, battle
 		cout << "Nothing here." << endl;
 	}
 }
-void maze::move(chest& ch, event& e, Player& p , vector<enemy>& ene, battle& b, trap& t, boss& bs)
+void maze::move(chest& ch, event& e, Player& p , vector<enemy>& ene, battle& b, trap& t, boss& bs, maze& m)
 {
 	char c;
 	cout << "Level: " << p.getLevelOfMaze() << endl;
@@ -255,7 +255,7 @@ void maze::move(chest& ch, event& e, Player& p , vector<enemy>& ene, battle& b, 
 			return;
 		enemy ee = generateRandomEnemy(ene);
 		print_instruction();
-		while (!_kbhit()) {}
+		if (!_kbhit()) {}
 		c = _getch();
 		system("cls");
 		if (c == 'd' && maps[p.getY()][p.getX() + 1] != '#')
@@ -263,28 +263,28 @@ void maze::move(chest& ch, event& e, Player& p , vector<enemy>& ene, battle& b, 
 			maps[p.getY()][p.getX()] = ' ';
 			maps[p.getY()][p.getX() + 1] = 'P';
 			p.changeX(1);
-			check(p.getX(), p.getY(), ch, e, p, ee, b, t, bs);
+			check(p.getX(), p.getY(), ch, e, p, ee, b, t, bs, m);
 		}
 		else if (c == 'w' && maps[p.getY() - 1][p.getX()] != '#')
 		{
 			maps[p.getY()][p.getX()] = ' ';
 			maps[p.getY() - 1][p.getX()] = 'P';
 			p.changeY(-1);
-			check(p.getX(), p.getY(), ch, e, p, ee, b, t, bs);
+			check(p.getX(), p.getY(), ch, e, p, ee, b, t, bs, m);
 		}
 		else if (c == 'a' && maps[p.getY()][p.getX() - 1] != '#')
 		{
 			maps[p.getY()][p.getX()] = ' ';
 			maps[p.getY()][p.getX() - 1] = 'P';
 			p.changeX(-1);
-			check(p.getX(), p.getY(), ch, e, p, ee, b, t, bs);
+			check(p.getX(), p.getY(), ch, e, p, ee, b, t, bs, m);
 		}
 		else if (c == 's' && maps[p.getY() + 1][p.getX()] != '#')
 		{
 			maps[p.getY()][p.getX()] = ' ';
 			maps[p.getY() + 1][p.getX()] = 'P';
 			p.changeY(1);
-			check(p.getX(), p.getY(), ch, e, p, ee, b, t, bs);
+			check(p.getX(), p.getY(), ch, e, p, ee, b, t, bs, m);
 		}
 		else if (c == 'z')
 		{
@@ -308,7 +308,7 @@ void maze::move(chest& ch, event& e, Player& p , vector<enemy>& ene, battle& b, 
 		{
 			cout << "Level: " << p.getLevelOfMaze() << endl;
 			print_maze();
-			p.useItem(p, ee);
+			p.useItems(p, ee, m);
 		}
 		else
 		{
@@ -321,7 +321,7 @@ void maze::move(chest& ch, event& e, Player& p , vector<enemy>& ene, battle& b, 
 enemy maze::generateRandomEnemy(vector<enemy>& e)
 {
 	int i = 0;
-	srand(time(NULL));
+	srand(time(nullptr));
 	i = rand() % e.size();
 	return e[i];
 }

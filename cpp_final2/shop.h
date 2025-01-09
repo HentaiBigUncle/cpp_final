@@ -31,6 +31,8 @@
 #include"Heart_Amulet.h"
 #include"Dfs_Amulet.h"
 #include"Strength_Amulet.h"
+#include"Zenith.h"
+#include"Almighty_Amulet.h"
 #include<vector>
 
 class HealthPotion;
@@ -67,7 +69,8 @@ class Magic_Amulet;
 class Heart_Amulet;
 class Dfs_Amulet;
 class Strength_Amulet;
-
+class Zenith;
+class Almighty_Amulet;
 class shop
 {
 private:
@@ -102,13 +105,16 @@ private:
 	Iron_Sword iron_sword;
 	Gold_Sword gold_sword;
 	Diamond_Sword diamond_sword;
+	Zenith zenith;
 	//Amulet
 	Heart_Amulet heart_amulet;
 	Magic_Amulet magic_amulet;
 	Strength_Amulet strength_amulet;
 	Dfs_Amulet dfs_amulet;
+	Almighty_Amulet almighty_Amulet;
 	//item
 	MagicPotion magicPotion;
+	HealthPotion healthPotion;
 
 	vector<Equipment> shopHelmet;
 	vector<Equipment> shopArmor;
@@ -136,6 +142,11 @@ public:
 	void displayShopItems();
 
 	void Instruction();
+	void SellInstruction();
+
 	void purchaseEquipmentItems(int, Player&);
+/*	void sellItemEquipment(int, Player&);
+	void sellEquipment(Player&);
+	void sellItem(Player&);*/
 };
 

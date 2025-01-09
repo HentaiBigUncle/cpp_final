@@ -3,6 +3,13 @@
 #include<iostream>
 #include<string>
 #include<cmath>
+#include"HealthPotion.h"
+#include"MagicPotion.h"
+#include"conio.h"
+#include"windows.h"
+
+class HealthPotion;
+class MagicPotion;
 
 using namespace std;
 
@@ -10,6 +17,7 @@ Player::Player(int c, string n, character* ch) :
 	coin(c), name(n), chara(ch)
 {
 	role = chara->getType();
+
 }
 //change
 void Player::changeCoin(int c)
@@ -35,10 +43,7 @@ void Player::changeLv()
 int Player::getCoin() { return coin; }
 int Player::getLevel() { return lv; }
 character* Player::getCharacter() { return chara; }
-vector<Item> *Player::getInventor()
-{
-	return &inventory;
-}
+
 void Player::LevelStatsChange()
 {
 	chara->changeAtk(1);
@@ -77,43 +82,43 @@ void Player::print()
 	cout << "Name: " << name <<" Type: " << role << " Level: " << lv <<" Exp: "<<exp<<"/"<<maxExp<< " Coin: " << coin << endl;
 	chara->print();
 }
-Equipment* Player::getEquipment()
-{
-	return *equipment;
-}
-void Player::displayItems()
-{
-	for (int i = 0; i < inventory.size(); i++)
-	{
-		cout << i + 1 << ". " << inventory[i].getName() << " " << "Amount: " << endl;
-		inventory[i].print();
-	}
-}
-void Player::addHelmet(Equipment& e)
+void Player::addHelmet(Equipment* e)
 {
 	helmet.push_back(e);
 }
-void Player::addArmor(Equipment& e)
+void Player::addArmor(Equipment* e)
 {
 	armor.push_back(e);
 }
-void Player::addHand_Armor(Equipment& e)
+void Player::addHand_Armor(Equipment* e)
 {
 	hand_armor.push_back(e);
 }
-void Player::addLeg_Armor(Equipment& e)
+void Player::addLeg_Armor(Equipment* e)
 {
 	leg_armor.push_back(e);
 }
-void Player::addSword(Equipment& e)
+void Player::addSword(Equipment* e)
 {
 	Sword.push_back(e);
 }
-void Player::addAmulet(Equipment& e)
+void Player::addAmulet(Equipment* e)
 {
 	Amulet.push_back(e);
 }
-
+void Player::addItemToInventory(Player& p, Item* item)
+{
+	bool added = false;
+	for (int i = 0; i < 2; i++)
+	{
+		if (inventory[i]->getName() == item->getName())
+		{
+			added = true;
+			inventory[i]->addAmount();
+			break;
+		}
+	}
+}
 /*void Player::discardHelmet(Equipment& e)
 {
 	auto it = find(helmet->begin(), helmet->end(), e);
@@ -160,12 +165,12 @@ int Player::getX() { return pX; }
 int Player::getY() { return pY; }
 bool Player::getDie() { return isDie; }
 string Player::getName() { return name; }
-vector<Equipment> Player::getHelmet() { return helmet; }
-vector<Equipment> Player::getArmor() { return armor; }
-vector<Equipment> Player::getLeg_Armor() { return leg_armor; }
-vector<Equipment> Player::getHand_Armor() { return hand_armor; }
-vector<Equipment> Player::getSword() { return Sword; }
-vector<Equipment> Player::getAmulet() { return Amulet; }
+vector<Equipment*> Player::getHelmet() { return helmet; }
+vector<Equipment*> Player::getArmor() { return armor; }
+vector<Equipment*> Player::getLeg_Armor() { return leg_armor; }
+vector<Equipment*> Player::getHand_Armor() { return hand_armor; }
+vector<Equipment*> Player::getSword() { return Sword; }
+vector<Equipment*> Player::getAmulet() { return Amulet; }
 
 //change
 void Player::changeLevel1() { levelOneComplete = true; }
@@ -194,7 +199,7 @@ void Player::displayHelmet()
 		for (int i = 0; i < helmet.size(); i++)
 		{
 			cout << i + 1 << ". ";
-			helmet[i].print();
+			helmet[i]->print();
 		}
 	}
 }
@@ -207,7 +212,7 @@ void Player::displayArmor()
 		for (int i = 0; i < armor.size(); i++)
 		{
 			cout << i + 1 << ". ";
-			armor[i].print();
+			armor[i]->print();
 		}
 	}
 }
@@ -220,7 +225,7 @@ void Player::displayLegArmor()
 		for (int i = 0; i < leg_armor.size(); i++)
 		{
 			cout << i + 1 << ". ";
-			leg_armor[i].print();
+			leg_armor[i]->print();
 		}
 	}
 }
@@ -233,7 +238,7 @@ void Player::displayHandArmor()
 		for (int i = 0; i < hand_armor.size(); i++)
 		{
 			cout << i + 1 << ". ";
-			hand_armor[i].print();
+			hand_armor[i]->print();
 		}
 	}
 }
@@ -246,7 +251,7 @@ void Player::displaySword()
 		for (int i = 0; i < Sword.size(); i++)
 		{
 			cout << i + 1 << ". ";
-			Sword[i].print();
+			Sword[i]->print();
 		}
 	}
 }
@@ -259,7 +264,7 @@ void Player::displayAmulet()
 		for (int i = 0; i < Amulet.size(); i++)
 		{
 			cout << i + 1 << ". ";
-			Amulet[i].print();
+			Amulet[i]->print();
 		}
 	}
 }
@@ -309,18 +314,21 @@ void Player::EquipHelmet(Player& p)
 		{
 			if (equipment[0] == 0)
 			{
-				cout << "You equip " << helmet[n - 1].getName() << endl;
-				equipment[0] = &helmet[n - 1];
+				cout << "You equip " << helmet[n - 1]->getName() << endl;
+				equipment[0] = helmet[n - 1];
 				equipment[0]->AddProperty(p);
+				//helmet.erase(helmet.begin() + n - 1);
 				break;
 			}
 			else
 			{
-				cout << "You unequip" << equipment[0]->getName() << endl;
-				cout << "You equip " << helmet[n - 1].getName() << endl;
+				cout << "You unequip " << equipment[0]->getName() << endl;
+				cout << "You equip " << helmet[n - 1]->getName() << endl;
 				equipment[0]->MinusProperty(p);
-				equipment[0] = &helmet[n - 1];
+				//helmet.push_back(*equipment[0]);
+				equipment[0] = helmet[n - 1];
 				equipment[0]->AddProperty(p);
+				//helmet.erase(helmet.begin() + n - 1);
 				break;
 			}
 		}
@@ -345,18 +353,21 @@ void Player::EquipArmor(Player& p)
 		{
 			if (equipment[1] == 0)
 			{
-				cout << "You equip " << armor[n - 1].getName() << endl;
-				equipment[1] = &armor[n - 1];
+				cout << "You equip " << armor[n - 1]->getName() << endl;
+				equipment[1] = armor[n - 1];
 				equipment[1]->AddProperty(p);
+				//armor.erase(armor.begin() + n - 1);
 				break;
 			}
 			else
 			{
-				cout << "You unequip" << equipment[1]->getName() << endl;
-				cout << "You equip " << armor[n - 1].getName() << endl;
+				cout << "You unequip " << equipment[1]->getName() << endl;
+				cout << "You equip " << armor[n - 1]->getName() << endl;
 				equipment[1]->MinusProperty(p);
-				equipment[1] = &armor[n - 1];
+				//armor.push_back(*equipment[1]);
+				equipment[1] = armor[n - 1];
 				equipment[1]->AddProperty(p);
+				//armor.erase(armor.begin() + n - 1);
 				break;
 			}
 		}
@@ -381,18 +392,21 @@ void Player::EquipLegArmor(Player& p)
 		{
 			if (equipment[2] == 0)
 			{
-				cout << "You equip " << leg_armor[n - 1].getName()<<endl;
-				equipment[2] = &leg_armor[n - 1];
+				cout << "You equip " << leg_armor[n - 1]->getName()<<endl;
+				equipment[2] = leg_armor[n - 1];
 				equipment[2]->AddProperty(p);
+				//leg_armor.erase(leg_armor.begin() + n - 1);
 				break;
 			}
 			else
 			{
-				cout << "You unequip" << equipment[2]->getName() << endl;
-				cout << "You equip " << leg_armor[n - 1].getName();
+				cout << "You unequip " << equipment[2]->getName() << endl;
+				cout << "You equip " << leg_armor[n - 1]->getName();
 				equipment[2]->MinusProperty(p);
-				equipment[2] = &leg_armor[n - 1];
+				//leg_armor.push_back(*equipment[2]);
+				equipment[2] = leg_armor[n - 1];
 				equipment[2]->AddProperty(p);
+				//leg_armor.erase(leg_armor.begin() + n - 1);
 				break;
 			}
 		}
@@ -417,18 +431,21 @@ void Player::EquipHandArmor(Player& p)
 		{
 			if (equipment[3] == 0)
 			{
-				cout << "You equip " << hand_armor[n - 1].getName() << endl;
-				equipment[3] = &hand_armor[n - 1];
+				cout << "You equip " << hand_armor[n - 1]->getName() << endl;
+				equipment[3] = hand_armor[n - 1];
 				equipment[3]->AddProperty(p);
+				//hand_armor.erase(hand_armor.begin() + n - 1);
 				break;
 			}
 			else
 			{
-				cout << "You unequip" << equipment[3]->getName() << endl;
-				cout << "You equip " << hand_armor[n - 1].getName() << endl;
+				cout << "You unequip " << equipment[3]->getName() << endl;
+				cout << "You equip " << hand_armor[n - 1]->getName() << endl;
 				equipment[3]->MinusProperty(p);
-				equipment[3] = &hand_armor[n - 1];
+				//hand_armor.push_back(*equipment[3]);
+				equipment[3] = hand_armor[n - 1];
 				equipment[3]->AddProperty(p);
+				//hand_armor.erase(hand_armor.begin() + n - 1);
 				break;
 			}
 		}
@@ -453,18 +470,21 @@ void Player::EquipSword(Player& p)
 		{
 			if (equipment[4] == 0)
 			{
-				cout << "You equip " << Sword[n - 1].getName() << endl;
-				equipment[4] = &Sword[n - 1];
+				cout << "You equip " << Sword[n - 1]->getName() << endl;
+				equipment[4] = Sword[n - 1];
 				equipment[4]->AddProperty(p);
+				//Sword.erase(Sword.begin() + n - 1);
 				break;
 			}
 			else
 			{
-				cout << "You unequip" << equipment[4]->getName() << endl;
-				cout << "You equip " << Sword[n - 1].getName() << endl;
+				cout << "You unequip " << equipment[4]->getName() << endl;
+				cout << "You equip " << Sword[n - 1]->getName() << endl;
 				equipment[4]->MinusProperty(p);
-				equipment[4] = &Sword[n - 1];
+				//Sword.push_back(*equipment[4]);
+				equipment[4] = Sword[n - 1];
 				equipment[4]->AddProperty(p);
+				//Sword.erase(Sword.begin() + n - 1);
 				break;
 			}
 		}
@@ -489,70 +509,75 @@ void Player::EquipAmulet(Player& p)
 		{
 			if (equipment[5] == 0)
 			{
-				cout << "You equip " << Amulet[n - 1].getName() << endl;
-				equipment[5] = &Amulet[n - 1];
+				cout << "You equip " << Amulet[n - 1]->getName() << endl;
+				equipment[5] = Amulet[n - 1];
 				equipment[5]->AddProperty(p);
+				//Amulet.erase(Amulet.begin() + n - 1);
 				break;
 			}
 			else
 			{
-				cout << "You unequip" << equipment[5]->getName() << endl;
-				cout << "You equip " << Amulet[n - 1].getName() << endl;
+				cout << "You unequip " << equipment[5]->getName() << endl;
+				cout << "You equip " << Amulet[n - 1]->getName() << endl;
 				equipment[5]->MinusProperty(p);
-				equipment[5] = &Amulet[n - 1];
+				//Amulet.push_back(*equipment[5]);
+				equipment[5] = Amulet[n - 1];
 				equipment[5]->AddProperty(p);
+				//Amulet.erase(Amulet.begin() + n - 1);
 				break;
 			}
 		}
 	}
 }
-void Player::addItem(Item& item)
-{
-	inventory.push_back(item);
-}
 void Player::displayItem()
 {
-	if (!inventory.empty())
+	for (int i = 0; i < 2; i++)
 	{
-		for (int i = 0; i < inventory.size(); i++)
-		{
-			cout << i+1 << ". " << inventory[i].getName() << " Amount: " << inventory[i].getAmount() << endl;
-			inventory[i].print();
-		}
-	}
-	else
-	{
-		cout << "no item"<<endl;
+		cout << i+1 << ". " << inventory[i]->getName() << " Amount: " << inventory[i]->getAmount() << endl;
+		inventory[i]->print();
 	}
 }
 
-void Player::useItem(Player& p, enemy& e)
+void Player::useItems(Player& p, enemy& e, maze& m)
 {
-	displayItem();
-	if (inventory.empty())
-	{
-		cout << "No item to use" << endl;
-		return;
-	}
 	int n = 0;
+	bool first = true;
+	system( "cls" );
 	while (true)
 	{
-		cout << "enter the number of the item (" <<inventory.size() + 1<<" = exit" << endl;
-		cin >> n;
-		if (n == inventory.size() + 1)
-			return;
-		if (n >= 1 && n <= inventory.size())
+		char cc;
+		if (!first)
 		{
-			inventory[n - 1].useItem(p, e);
-			inventory[n - 1].minusItemAmount();
-			if (inventory[n - 1].getAmount() == 0)
+			cout << "enter any char to continue" << endl;
+			if (!_kbhit()) {}
+			cc = _getch();
+			system("cls");
+		}
+		displayItem();
+		cout << "enter the number of the item (" <<3<<" = exit)" << endl;
+		cin >> n;
+		if (n == 3)
+		{
+			cout << "Level: " << level << endl;
+			m.print_maze();
+			return;
+		}
+		if (n >= 1 && n <= 2)
+		{
+			first = false;
+			if (inventory[n - 1]->getAmount() == 0)
 			{
-				inventory.erase(inventory.begin() + n - 1);
+				cout << "You didn't have any " << inventory[n - 1]->getName() << endl;
 			}
-			break;
+			else
+			{
+				inventory[n - 1]->useItem(p, e);
+				inventory[n - 1]->minusItemAmount();
+			}
 		}
 		else
 		{
+			first = false;
 			cout << "wrong number, enter again!" << endl;
 		}
 	}

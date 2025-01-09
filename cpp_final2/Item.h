@@ -2,6 +2,7 @@
 #include<string>
 #include"enemy.h"
 #include"Player.h"
+
 using namespace std;
 
 class Player;
@@ -24,12 +25,11 @@ protected:
 	int round;
 	int gold;
 public:
-	Item(int = 0, int = 0, int = 0, int = 0, int = 0, int = 0, int = 0, int = 0, int = 0, int = 0,  int = 0, string = "");
+	Item(int = 0, int = 0, int = 0, int = 0, int = 0, int = 0, int = 0, int = 0, int = 0, int = 0, int = 0, string = "");
 
-	virtual void  useItem(Player&, enemy&) const;
+	virtual void  useItem(Player&, enemy&) {}
 	void minusItemAmount();
 	int getGold() const;
-	void addItemToInventory(Player&, Item&);
 	string getName();
 	int getAmount();
 	void addAmount();

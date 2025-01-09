@@ -4,7 +4,9 @@
 #include"Skeleton.h"
 #include"Slime.h"
 #include"battle.h"
+#include"maze.h"
 
+class maze;
 class battle;
 class Slime;
 class Skeleton;
@@ -17,6 +19,6 @@ class event
 	Skeleton skele;
 	Zombie z;
 public:
-	void occurEvent(Player&, battle&);
+	void occurEvent(Player&, battle&, maze&);
 };
 

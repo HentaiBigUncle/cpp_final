@@ -5,11 +5,12 @@
 #include<vector>
 #include"enemy.h"
 #include"Equipment.h"
-
+#include"maze.h"
 #include<map>
 #include"Item.h"
 using namespace std;
 
+class maze;
 class Equipment;
 class Item;
 class character;
@@ -17,7 +18,6 @@ class character;
 class Player
 {
 	character* chara = NULL;
-	vector<Item> inventory;
 	int lv = 1;//level
 	int coin;
 	int exp = 0;
@@ -26,13 +26,12 @@ class Player
 	string role, name;
 	bool isDie = false;
 
-	Equipment *equipment[6] = {};//helmet, armor, leg, hand, sword, amulet
-	vector<Equipment> helmet;
-	vector<Equipment> armor;
-	vector<Equipment> leg_armor;
-	vector<Equipment> hand_armor;
-	vector<Equipment> Sword;
-	vector<Equipment> Amulet;
+	vector<Equipment*> helmet;
+	vector<Equipment*> armor;
+	vector<Equipment*> leg_armor;
+	vector<Equipment*> hand_armor;
+	vector<Equipment*> Sword;
+	vector<Equipment*> Amulet;
 	void LevelStatsChange();
 	void changeLv();
 
@@ -44,6 +43,8 @@ class Player
 	bool levelThreeComplete = false;
 	bool levelFourComplete = false;
 public:
+	Item* inventory[2] = {};
+	Equipment* equipment[6] = {};//helmet, armor, leg, hand, sword, amulet
 	Player(int, string, character*);
 	//get
 	int getLevelOfMaze();
@@ -56,20 +57,18 @@ public:
 	void changeLevelOfMaze();
 	void changeExp(int);
 	void changeCoin(int);
-	void displayItems();
-	void receiveDamage(int, string);
 
-	Equipment *getEquipment();
-	vector<Item> *getInventor();
+	void receiveDamage(int, string);
 	
 	void getCoinExpByEnemy(enemy*);
 
-	void addHelmet(Equipment&);
-	void addArmor(Equipment&);
-	void addLeg_Armor(Equipment&);
-	void addHand_Armor(Equipment&);
-	void addSword(Equipment&);
-	void addAmulet(Equipment&);
+	void addItemToInventory(Player& p, Item* item);
+	void addHelmet(Equipment*);
+	void addArmor(Equipment*);
+	void addLeg_Armor(Equipment*);
+	void addHand_Armor(Equipment*);
+	void addSword(Equipment*);
+	void addAmulet(Equipment*);
 
 	/*void discardHelmet(Equipment&);
 	void discardArmor(Equipment&);
@@ -78,12 +77,12 @@ public:
 	void discardSword(Equipment&);
 	void discardAmulet(Equipment&);*/
 
-	vector<Equipment> getHelmet();
-	vector<Equipment> getArmor();
-	vector<Equipment> getLeg_Armor();
-	vector<Equipment> getHand_Armor();
-	vector<Equipment> getSword();
-	vector<Equipment> getAmulet();
+	vector<Equipment*> getHelmet();
+	vector<Equipment*> getArmor();
+	vector<Equipment*> getLeg_Armor();
+	vector<Equipment*> getHand_Armor();
+	vector<Equipment*> getSword();
+	vector<Equipment*> getAmulet();
 
 	void displayHelmet();
 	void displayArmor();
@@ -92,7 +91,7 @@ public:
 	void displaySword();
 	void displayAmulet();
 
-	void addItem(Item&);
+	void addItem(Item*);
 	void Equip(Player&);
 	void EquipHelmet(Player& );
 	void EquipArmor(Player&);
@@ -123,7 +122,7 @@ public:
 
 	void displayItem();
 	void displayEquipment();
-	void useItem(Player&, enemy&);
+	void useItems(Player&, enemy&, maze&);
 	void print();
 };
 

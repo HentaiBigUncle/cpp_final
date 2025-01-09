@@ -5,8 +5,15 @@ MagicPotion::MagicPotion(int mHp, int mMp, int atk, int mAtk, int mDfs, int r, i
 {
 
 }
-void MagicPotion::useItem(Player& p, enemy& e) const
+void MagicPotion::useItem(Player& p, enemy& e)
 {
-	p.getCharacter()->changeMp(mp);
-	cout << "You restore " <<mp<<" mp" << endl;
+	if (amount == 0)
+	{
+		cout << "You didn't have any Magic Potion" << endl;
+	}
+	else
+	{
+		p.getCharacter()->changeMp(mp);
+		cout << "You restore " << mp << " mp" << endl;
+	}
 }

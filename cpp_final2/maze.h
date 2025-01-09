@@ -47,9 +47,9 @@ public:
 	void generateTrap(Player&);
 	enemy generateRandomEnemy(vector<enemy>&);
 
-	void check(int,int, chest&, event&, Player&, enemy&, battle&, trap&, boss&);
+	void check(int,int, chest&, event&, Player&, enemy&, battle&, trap&, boss&, maze &);
 
-	void move(chest&, event&, Player&, vector<enemy>&, battle&, trap&, boss&);
+	void move(chest&, event&, Player&, vector<enemy>&, battle&, trap&, boss&, maze&);
 	
 
 	void print_instruction();

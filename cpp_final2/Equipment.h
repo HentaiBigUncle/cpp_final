@@ -19,7 +19,7 @@ protected:
 
 public:
 	Equipment(int, int, int, int, int, int, int, string, string);
-
+	virtual ~Equipment() {};
 	int getGold();
 	string getName();
 	string getType();

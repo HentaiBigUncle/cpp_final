@@ -32,6 +32,10 @@
 #include"enchanter.h"
 #include<conio.h>
 #include<windows.h>
+#include"Leather_Armor.h"
+#include"Leather_hand_armor.h"
+#include"Leather_Leg_Armor.h"
+#include"Wood_Sword.h"
 
 using namespace std;
 
@@ -47,7 +51,7 @@ Pontif_Salivon pontif;
 NamelessKing namelessKing;
 //game maze 
 
-MagicPotion mps;
+
 GameManager GM;
 battle b;
 trap t;
@@ -79,15 +83,50 @@ vector<enemy> LevelTwoEnemy;
 vector<enemy> LevelThreeEnemy;
 vector<enemy> LevelFourEnemy;
 Almighty_Amulet AA;
+//initial equipment
+Heart_Amulet heart;
 Leather_helmet lh;
+Leather_Armor la;
+Leather_hand_armor lha;
+Leather_Leg_Armor lla;
+Wood_Sword wss;
+
 Iron_Helmet Ih;
+
+MagicPotion mps;
+HealthPotion hpp;
 void setUpLevel1();
 void SetUpLevel2();
 void setUpLevel3();
 void SetUpLevel4();
+
+void InitialEquip(Player& p)
+{
+	p.inventory[0] = &hpp;
+	p.inventory[1] = &mps;
+	/*p.equipment[0] = &lh;
+	p.equipment[0]->AddProperty(p);
+	p.addHelmet(&lh);
+	p.equipment[1] = &la;
+	p.equipment[1]->AddProperty(p);
+	p.addArmor(&la);
+	p.equipment[2] = &lla;
+	p.equipment[2]->AddProperty(p);
+	p.addLeg_Armor(&lla);
+	p.equipment[3] = &lha;
+	p.equipment[3]->AddProperty(p);
+	p.addHand_Armor(&lha);
+	p.equipment[4] = &wss;
+	p.equipment[4]->AddProperty(p);
+	p.addSword(&wss);
+	p.equipment[5] = &heart;
+	p.equipment[5]->AddProperty(p);
+	p.addAmulet(&heart);*/
+}
 int main()
 {
 	Player p(10, "You didn't enter any name", &w1);
+
 	string str;
 	cout << "Welcome to the RPG Cave Game" << endl;
 	cout << "please enter your name" << endl;
@@ -97,6 +136,11 @@ int main()
 		str = "You didn't enter any name";
 	}
 	p.changeName(str);
+	cout << "Enter any char to continue" << endl;
+	char ss;
+	if (!_kbhit()) {}
+	ss = _getch();
+	system("cls");
 	int choose = 0;
 	cout << "enter the character you want" << endl;
 	cout << "1. warrior" << endl;
@@ -127,27 +171,51 @@ int main()
 			cout << "no such character, choose again" << endl;
 		}
 	}
+	cout << "enter any char to continue" << endl;
+	if (!_kbhit()) {}
+	ss = _getch();
+	system("cls");
+
 	cout << "Hello " << p.getName() << endl;
 	cout << "These are your stats" << endl;
 	p.print();
+
+	InitialEquip(p);
+	/*cout << "enter any char to continue" << endl;
+	if (!_kbhit()) {}
+	ss = _getch();
+	system("cls");
+	cout << "Here is your initial Equipment" << endl;
+	p.displayEquipment();*/
+
+
+	cout << "enter any char to continue" << endl;
+	if (!_kbhit()) {}
+	ss = _getch();
+	system("cls");
+
+	cout << "Here is yout initial item" << endl;
+	p.displayItem();
+
 	cout << "Enter any char to continue to level 1" << endl;
-	char ss;
 	while (!_kbhit()) {}
 	ss = _getch();
 	system("cls");
+	
 	//maze
 	maze m1(5, p);
 	//level1
 	setUpLevel1();
 	GM.level1(m1, p, LevelOneEnemy, b, et, ct, t, strongSkeleton);
 	//level2
-	maze m2(7, p);
+	
 	if (!p.getDie())
 	{
 		GM.openShop(sh, p);
+		maze m2(7, p);
 		SetUpLevel2();
 		GM.level2(m2, p, LevelTwoEnemy, b, et, ct, t, lostPaladin);
-		if(p.getDie())
+		if(!p.getDie())
 			GM.openShop(sh, p);
 	}
 	//level3
@@ -156,7 +224,7 @@ int main()
 		maze m3(9, p);
 		setUpLevel3();
 		GM.level3(m3, p, LevelThreeEnemy, b, et, ct, t, pontif);
-		if(p.getDie())
+		if(!p.getDie())
 			GM.openShop(sh, p);
 	}
 	//level4

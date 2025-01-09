@@ -56,7 +56,7 @@ void character::changeMaxMp(int m)
 }
 void character::changeMagicDfs(int d)
 {
-	dfs += d;
+	magicalDfs += d;
 }
 void character::changeHp(int h)
 {

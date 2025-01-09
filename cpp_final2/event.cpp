@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void event::occurEvent(Player& p, battle& b)
+void event::occurEvent(Player& p, battle& b, maze& m)
 {
 	cout << "Specail event happened" << endl;
 	srand(time(NULL));
@@ -29,7 +29,7 @@ void event::occurEvent(Player& p, battle& b)
 		p.getCharacter()->changeHp(-hurt);
 		cout << "you hurt yourself " << "-" << hurt << " hp" << endl;
 		p.getCharacter()->dieCheck();
-		if (p.getDie())
+		if (p.getCharacter()->getDie())
 		{
 			p.changeDeath();
 			cout << "You die" << endl;
@@ -39,18 +39,18 @@ void event::occurEvent(Player& p, battle& b)
 	{
 		cout << "oh no you raid by slime" << endl;
 		s.changeLv(p.getLevelOfMaze());
-		b.StartBattle(s, p);
+		b.StartBattle(s, p, m);
 	}
 	else if (n == 4)
 	{
 		cout << "oh no you raid by Skeleton" << endl;
 		skele.changeLv(p.getLevelOfMaze());
-		b.StartBattle(skele, p);
+		b.StartBattle(skele, p, m);
 	}
 	else if (n == 5)
 	{
 		cout << "oh no you raid by a zombie" << endl;
 		z.changeLv(p.getLevelOfMaze());
-		b.StartBattle(z, p);
+		b.StartBattle(z, p, m);
 	}
 }

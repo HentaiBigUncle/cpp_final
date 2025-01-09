@@ -109,12 +109,43 @@ private:
 	Dfs_Amulet dfs_amulet;
 
 	//Items
-	//HealthPotion healthPotion;
+	HealthPotion healthPotion;
 	MagicPotion magicPotion;
-
+	vector<Equipment> possibleEquipment =
+	{
+		leather_helmet,
+		leather_Armor,
+		leather_leg_armor,
+		leather_hand_armor,
+		stone_helmet,
+		stone_armor,
+		stone_leg_armor,
+		stone_hand_armor,
+		iron_helmet,
+		iron_armor,
+		iron_leg_armor,
+		iron_hand_armor,
+		gold_helmet,
+		gold_armor,
+		gold_leg_armor,
+		gold_hand_armor,
+		diamond_helmet,
+		diamond_armor,
+		diamond_leg_armor,
+		diamond_hand_armor,
+		wood_swrod,
+		stone_sword,
+		iron_sword,
+		gold_sword,
+		diamond_sword,
+		heart_amulet,
+		magic_amulet,
+		strength_amulet,
+		dfs_amulet,
+	};
 public:
 	void OpenChest(Player&);
 	Item generateItem();
-	Equipment generateEquipment();
+	//Equipment generateEquipment();
 };
 

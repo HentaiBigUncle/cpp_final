@@ -6,7 +6,15 @@ HealthPotion::HealthPotion(int mHp , int mMp , int atk , int mAtk , int mDfs , i
 {
 
 }
-void HealthPotion::useItem(Player& p, enemy& e) const
+void HealthPotion::useItem(Player& p, enemy& e)
 {
-	p.getCharacter()->changeHp(heal);
+	if (amount == 0)
+	{
+		cout << "You didn't have any Health Potion" << endl;
+	}
+	else
+	{
+		p.getCharacter()->changeHp(heal);
+		cout << "You heal " << heal << " hp" << endl;
+	}
 }

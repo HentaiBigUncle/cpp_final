@@ -87,6 +87,7 @@ void enemy::changeLv(int level)
 	lv = level;
 	LevelStatsChange();
 	changeCoinExp();
+	hp = maxHp;
 }
 void enemy::changeLevel(int l)
 {

@@ -4,26 +4,25 @@
 
 using namespace std;
 
-Item::Item(int mHp, int mMp, int atk,int mAtk, int mDfs, int r,  int dfs, int _heal, int _mp, int _damage, int _gold, string n) :
+Item::Item(int mHp, int mMp, int atk, int mAtk, int mDfs, int r, int dfs, int _heal, int _mp, int _damage, int _gold, string n) :
 	mAtkBonus(mAtk), mDfsBonus(mDfs), round(r), MaxHpBonus(mHp), MaxMpBonus(mMp), atkBonus(atk), dfsBonus(dfs), heal(_heal), damage(_damage), name(n), mp(_mp), gold(_gold)
 {
-	
-}
 
+}
 void Item::print()
 {
-	cout << "Name: " << name<<endl;
+	cout << "Name: " << name << endl;
 	if (MaxHpBonus != 0)
 	{
-		cout << " MaxHpBonus: " << MaxHpBonus<<endl;
+		cout << "MaxHpBonus: " << MaxHpBonus << endl;
 	}
 	if (MaxMpBonus != 0)
 	{
-		cout << " MaxMpBonus" << MaxMpBonus<<endl;
+		cout << "MaxMpBonus" << MaxMpBonus << endl;
 	}
 	if (atkBonus != 0)
 	{
-		cout << " AtkBonus: " << atkBonus<<endl;
+		cout << "AtkBonus: " << atkBonus << endl;
 	}
 	if (mAtkBonus != 0)
 	{
@@ -31,15 +30,15 @@ void Item::print()
 	}
 	if (dfsBonus != 0)
 	{
-		cout << " DfsBonus: " << dfsBonus<<endl;
+		cout << " DfsBonus: " << dfsBonus << endl;
 	}
 	if (mDfsBonus != 0)
 	{
-		cout << " MagicalDfsBonus: " << mDfsBonus<<endl;
+		cout << "MagicalDfsBonus: " << mDfsBonus << endl;
 	}
 	if (heal != 0)
 	{
-		cout << " Heal: " << heal<<endl;
+		cout << "Heal: " << heal << endl;
 	}
 	if (mp != 0)
 	{
@@ -47,7 +46,7 @@ void Item::print()
 	}
 	if (damage != 0)
 	{
-		cout << " Damage: " << damage<<endl;
+		cout << "Damage: " << damage << endl;
 	}
 	if (round != 0)
 	{
@@ -55,31 +54,6 @@ void Item::print()
 	}
 	cout << endl;
 }
-void Item::addItemToInventory(Player& p, Item& item)
-{
-	bool added = false;
-	if (p.getInventor() == NULL)
-	{
-		p.addItem(item);
-	}
-	else
-	{
-		for (int i = 0; i < p.getInventor()->size(); i++)
-		{
-			if (p.getInventor()->at(i).getName() == item.getName())
-			{
-				added = true;
-				p.getInventor()->at(i).addAmount();
-				break;
-			}
-		}
-		if (!added)
-		{
-			p.addItem(item);
-		}
-	}
-}
-void Item::useItem(Player&,enemy&) const{}
 string Item::getName()
 {
 	return name;
