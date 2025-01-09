@@ -8,12 +8,12 @@ void GameManager::level1(maze& m, Player& p, vector<enemy>& en, battle& b, event
 {
 	if (p.getLevel1())
 		return;
-	m.move(c, e, p, en, b, t, bs);
+	m.move(c, e, p, en, b, t, bs, m);
 	bs.dieCheck();
 	if (bs.getDie())
 	{
 		p.changeLevel1();
-		cout << "Congratulations! you pass level one" << endl;
+		cout << "Congratulations! "<<p.getName()<<", you pass level one" << endl;
 		p.changeLevelOfMaze();
 	}
 }
@@ -21,15 +21,15 @@ void GameManager::level2(maze& m, Player& p, vector<enemy>& en, battle& b, event
 {
 	if (p.getLevel2())
 		return;
-	if (!p.getLevel1())
+	if (p.getLevel1())
 	{
 		p.resetXandY();
-		m.move(c, e, p, en, b, t, bs);
+		m.move(c, e, p, en, b, t, bs, m);
 		bs.dieCheck();
 		if (bs.getDie())
 		{
 			p.changeLevel2();
-			cout << "Congratulations! you pass level two" << endl;
+			cout << "Congratulations! "<<p.getName()<<", you pass level two" << endl;
 			p.changeLevelOfMaze();
 		}
 	}
@@ -38,32 +38,32 @@ void GameManager::level3(maze& m, Player& p, vector<enemy>& en, battle& b, event
 {
 	if (p.getLevel3())
 		return;
-	if (!p.getLevel2())
+	if (p.getLevel2())
 	{
 		p.resetXandY();
-		m.move(c, e, p, en, b, t, bs);
+		m.move(c, e, p, en, b, t, bs, m);
 		bs.dieCheck();
 		if (bs.getDie())
 		{
 			p.changeLevel3();
-			cout << "Congratulations! you pass level three" << endl;
+			cout << "Congratulations! "<<p.getName()<<", you pass level three" << endl;
 			p.changeLevelOfMaze();
 		}
 	}
 }
-void GameManager::level4(maze& m, Player& p, vector<enemy>& en, battle& b, event& e, chest& c, trap& t, boss& bs)
+void GameManager::level4(maze& m, Player& p, vector<enemy> &en, battle& b, event &e, chest& c, trap &t, boss& bs)
 {
 	if (p.getLevel4())
 		return;
-	if (!p.getLevel3())
+	if (p.getLevel3())
 	{
 		p.resetXandY();
-		m.move(c, e, p, en, b, t, bs);
+		m.move(c, e, p, en, b, t, bs, m);
 		bs.dieCheck();
 		if (bs.getDie())
 		{
 			p.changeLevel4();
-			cout << "Congratulations! you pass level four" << endl;
+			cout << "Congratulations! "<<p.getName()<<", you pass level four" << endl;
 			cout << "Thanks for playing" << endl;
 			p.changeLevelOfMaze();
 		}
@@ -74,26 +74,36 @@ void GameManager::openShop(shop& s, Player& p)
 	char c;
 	bool isShopping = true, isFirst = true;
 	cout << "enter any char to open shop" << endl;
-	char ss;
-	while (!_kbhit()) {}
-	ss = _getch();
+	if (!_kbhit()) {}
+	c = _getch();
 	system("cls");
+<<<<<<< HEAD
+	cout << "Welcome"<<p.getName()<<", is there any thing you want" << endl;
+	cout << "1 = shop 2 = exit" << endl;
+=======
 
 	cout << "Welcome, is there any thing you want" << endl;
 	cout << "Y/N" << endl;
+>>>>>>> b5f116887d1e61ce12dfc429088e549a3550c2f6
 	while (isShopping)
 	{
 		if (!isFirst)
 		{
+			system("cls");
 			cout << "Anything else you want to buy" << endl;
-			cout << "Y/N" << endl;
+			cout << "1 = shop, 2 = exit" << endl;
 		}
-		while (!_kbhit()) {}
+		if(!_kbhit()){}
 		c = _getch();
 		system("cls");
+<<<<<<< HEAD
+		if (c == '1')
+=======
 		if (c == 'Y' || c == 'y')
+>>>>>>> b5f116887d1e61ce12dfc429088e549a3550c2f6
 		{
 			s.Instruction();
+			cout << "please enter number" << endl;
 			int com = 0;
 			cin >> com;
 			while(com <= 0 || com >= 8)
@@ -104,15 +114,34 @@ void GameManager::openShop(shop& s, Player& p)
 			s.purchaseEquipmentItems(com, p);
 			isFirst = false;
 		}
+<<<<<<< HEAD
+		/*else if (c == '2')
+		{
+			cout << "please enter number" << endl;
+			cout << "1. sell equipment" << endl;
+			cout << "2. sell item" << endl;
+			int com = 0;
+			cin >> com;
+			while (com <= 0 || com >= 3)
+			{
+				cout << "Invalid choice" << endl;
+				cin >> com;
+			}
+			s.sellItemEquipment(com, p);
+			isFirst = false;
+		}*/
+		else if (c == '2')
+=======
 		else if (c == 'N' || c == 'n')
+>>>>>>> b5f116887d1e61ce12dfc429088e549a3550c2f6
 		{
 			isShopping = false;
 			break;
 		}
 	}
 	cout << "Glad to see you again" << endl;
-	cout << "enter any char to continue to "<<p.getLevelOfMaze()<< endl;
-	while (!_kbhit()) {}
-	ss = _getch();
+	cout << "enter any char to continue to level" << p.getLevelOfMaze() << endl;
+	if (!_kbhit()) {}
+	c = _getch();
 	system("cls");
 }
