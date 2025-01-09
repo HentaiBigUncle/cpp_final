@@ -77,8 +77,14 @@ void GameManager::openShop(shop& s, Player& p)
 	if (!_kbhit()) {}
 	c = _getch();
 	system("cls");
+<<<<<<< HEAD
 	cout << "Welcome"<<p.getName()<<", is there any thing you want" << endl;
 	cout << "1 = shop 2 = exit" << endl;
+=======
+
+	cout << "Welcome, is there any thing you want" << endl;
+	cout << "Y/N" << endl;
+>>>>>>> b5f116887d1e61ce12dfc429088e549a3550c2f6
 	while (isShopping)
 	{
 		if (!isFirst)
@@ -90,7 +96,11 @@ void GameManager::openShop(shop& s, Player& p)
 		if(!_kbhit()){}
 		c = _getch();
 		system("cls");
+<<<<<<< HEAD
 		if (c == '1')
+=======
+		if (c == 'Y' || c == 'y')
+>>>>>>> b5f116887d1e61ce12dfc429088e549a3550c2f6
 		{
 			s.Instruction();
 			cout << "please enter number" << endl;
@@ -104,6 +114,7 @@ void GameManager::openShop(shop& s, Player& p)
 			s.purchaseEquipmentItems(com, p);
 			isFirst = false;
 		}
+<<<<<<< HEAD
 		/*else if (c == '2')
 		{
 			cout << "please enter number" << endl;
@@ -120,6 +131,9 @@ void GameManager::openShop(shop& s, Player& p)
 			isFirst = false;
 		}*/
 		else if (c == '2')
+=======
+		else if (c == 'N' || c == 'n')
+>>>>>>> b5f116887d1e61ce12dfc429088e549a3550c2f6
 		{
 			isShopping = false;
 			break;
