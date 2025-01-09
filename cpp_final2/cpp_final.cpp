@@ -147,8 +147,7 @@ int main()
 		GM.openShop(sh, p);
 		SetUpLevel2();
 		GM.level2(m2, p, LevelTwoEnemy, b, et, ct, t, lostPaladin);
-		if(p.getDie())
-			GM.openShop(sh, p);
+		
 	}
 	//level3
 	if (!p.getDie())
@@ -156,8 +155,7 @@ int main()
 		maze m3(9, p);
 		setUpLevel3();
 		GM.level3(m3, p, LevelThreeEnemy, b, et, ct, t, pontif);
-		if(p.getDie())
-			GM.openShop(sh, p);
+
 	}
 	//level4
 	if (!p.getDie())
